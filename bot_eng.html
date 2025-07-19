@@ -142,6 +142,7 @@
   <div id="gameSection" class="hidden">
     <div id="currentTurn"></div>
 
+```
 <div class="guess-section">
   <input type="text" id="guessInput" placeholder="YOUR GUESS(UPPERCASE)" />
   <button id="guessBtn" class="game-button">SUBMIT</button>
@@ -161,7 +162,7 @@
   <button id="retryBtn" class="game-button">RETRY</button>
   <button onclick="location.href='index.html'" class="game-button">HOME</button>
 </div>
-
+```
 
   </div>
 
@@ -213,7 +214,7 @@ const rawText = data.description || ‘게임 설명’;
 const htmlText = rawText.replace(/\n/g, ‘<br>’);
 document.getElementById(‘game-desc’).innerHTML = htmlText;
 
-
+```
   words = [];
   for (let length in data.words) {
     const count = data.wordCount[length] || 0;
@@ -234,7 +235,7 @@ document.getElementById(‘game-desc’).innerHTML = htmlText;
     'HELLO', 'WORLD', 'GAME', 'PLAY', 'WORD', 'PUZZLE', 'FIND', 'SEARCH'
   ];
 });
-
+```
 
 };
 
@@ -300,7 +301,7 @@ console.log(‘방향 검증 실패 - 기본 배치로 진행’);
 let placedWords = [];
 shuffle(words);
 
-
+```
 for (let word of words) {
   let placed = false;
   for (let attempt = 0; attempt < 500; attempt++) {
@@ -315,7 +316,7 @@ for (let word of words) {
   }
 }
 console.log('실제 배치된 단어 수:', placedWords.length);
-
+```
 
 }
 
@@ -336,11 +337,11 @@ for (let i = 0; i < word.length; i++) {
 let nx = x + dx * i, ny = y + dy * i;
 if (nx < 0 || ny < 0 || nx >= gridSize || ny >= gridHeight) return false;
 
-
+```
 let idx = ny * gridSize + nx;
 if (board[idx] && board[idx] !== word[i]) return false;
 if (usedIndexes.has(idx)) return false;
-
+```
 
 }
 return true;
@@ -412,7 +413,7 @@ board = Array(totalCells).fill(null);
 usedIndexes.clear();
 wordMap = {};
 
-
+```
 // 모든 단어 배치 시도
 let allPlaced = true;
 const shuffledWords = [...words].sort(() => Math.random() - 0.5);
@@ -431,7 +432,7 @@ if (allPlaced && checkDirectionVariety()) {
 
 attempts++;
 console.log(`${attempts}번째 시도 실패 - 다시 시도`);
-
+```
 
 } while (attempts < maxAttempts);
 
@@ -599,7 +600,7 @@ const totalWords = Object.keys(wordMap).length;
 if (foundWords.size >= totalWords && totalWords > 0) {
 resultShown = true;
 
-
+```
 setTimeout(() => {
   const player1Score = foundBy.player1.length;
   const player2Score = foundBy.player2.length;
@@ -615,7 +616,7 @@ setTimeout(() => {
   
   alert(`게임 종료!\n${player1}: ${player1Score}개\n${player2}: ${player2Score}개\n승자: ${winner}`);
 }, 500);
-
+```
 
 }
 }

@@ -169,37 +169,39 @@
 window.onload = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const poolFile = urlParams.get('pool');
-  if (!poolFile) {
-    document.body.innerHTML = '<p>❌ 워드풀 파일이 지정되지 않았습니다.</p>';
-    return;
-  }
 
+// 기본 한글 단어 목록으로 초기화
+let words = [‘게임’, ‘단어’, ‘찾기’, ‘놀이’, ‘승리’, ‘도전’, ‘재미’, ‘퍼즐’, ‘격자’, ‘글자’];
+
+if (poolFile) {
 fetch(‘wordpools/’ + poolFile + ‘.json’)
 .then(res => res.json())
 .then(data => {
 document.getElementById(‘game-title’).textContent = data.title || ‘게임 제목’;
 const rawText = data.description || ‘게임 설명’;
 const htmlText = rawText.replace(/\n/g, ‘<br>’);
-document.getElementById(‘game-desc’).innerHTML = htmlText; // innerHTML로 변경
+document.getElementById(‘game-desc’).innerHTML = htmlText;
 
 ```
-  words = [];
-  for (let length in data.words) {
-    const count = data.wordCount[length] || 0;
-    words.push(...getRandomSample(data.words[length], count));
-  }
-  console.log('총 단어 수:', words.length);
-  console.log('단어 목록:', words);
-})
-.catch(err => {
-  document.body.innerHTML = '<p>❌ 워드풀 로딩 중 오류 발생: ' + err.message + '</p>';
-});
+    words = [];
+    for (let length in data.words) {
+      const count = data.wordCount[length] || 0;
+      words.push(...getRandomSample(data.words[length], count));
+    }
+    console.log('총 단어 수:', words.length);
+    console.log('단어 목록:', words);
+  })
+  .catch(err => {
+    console.log('워드풀 로딩 실패, 기본 단어 사용');
+  });
 ```
+
+}
 
 const gridWidth = 17;
 const gridHeight = 11;
 const totalCells = gridWidth * gridHeight;
-let board, revealed, wordMap, foundWords, currentPlayer, foundBy, words, usedIndexes;
+let board, revealed, wordMap, foundWords, currentPlayer, foundBy, usedIndexes;
 let clovers = new Set(), daisies = new Set(), resultShown = false, gameStarted = false;
 let player1 = “플레이어1”, player2 = “플레이어2”, currentPlayerName = “”, wrongGuesses = [];
 

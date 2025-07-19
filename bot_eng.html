@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>WORPUZZMONG</title>
+
+<style>
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #FFF2EB; /* 전체 배경: 피치 크림톤 */
+    margin: 0;
+    padding: 20px;
+    color: #7A2E2E; /* 따뜻한 브라운 */
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #FF9494; /* 포인트 핑크 */
+  }
+
+  p {
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: #A65A5A; /* 부드러운 브라운 */
+  }
+
+  .game-button {
+    font-size: 18px;
+    background-color: #FFD6BA; /* 살구빛 버튼 */
+    padding: 10px 22px;
+    margin: 8px;
+    color: #7A2E2E;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .game-button:hover {
+    background-color: #FF9494;
+    color: white;
+    transform: scale(1.05);
+  }
+
+  .score-display {
+    font-size: 20px;
+    font-weight: bold;
+    color: #7A2E2E;
+    margin: 20px 0;
+  }
+  .score-computer {
+    background-color: #CDFFD1; /* 컴퓨터 점수: 연두색 배경 */
+    padding: 5px 10px;
+    border-radius: 4px;
+    display: inline-block;
+    margin: 0 5px;
+  }
+
+.score-computer, .score-user {
+    display: inline-block;
+    margin: 0 20px;
+}
+
+  .score-user {
+    background-color: #FFDCDC; /* 사용자 점수: 연핑크 배경 */
+    padding: 5px 10px;
+    border-radius: 4px;
+    display: inline-block;
+    margin: 0 5px;
+  }
+
+  .cell {
+    width: 38px;
+    height: 38px;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid #DDAA88;
+    line-height: 1;
+  }
+
+  .revealed {
+    background-color: #FFFFFF;
+  }
+
+  .word-owned-user {
+    background-color: #FFDCDC; /* 사용자 점유 셀: 연핑크 */
+  }
+
+  .word-owned-computer {
+    background-color: #CDFFD1; /* 컴퓨터 점유 셀: 연두*/
+  }
+
+  #currentTurn {
+    font-size: 20px;
+    margin: 10px;
+    color: #A65A5A;
+  }
+
+  #game {
+    display: grid;
+    grid-template-columns: repeat(19, 1fr);
+    grid-gap: 2px;
+    padding: 3px;
+    border: 2px solid #C89A7B;
+    background-color: #FFF2EB;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  /* 모바일 반응형 스타일 */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    p {
+      font-size: 12px;
+      margin: 0 10px 15px;
+    }
+
+    .score-display {
+      font-size: 20px;
+      margin: 15px 0;
+    }
+
+    #game {
+      grid-template-columns: repeat(19, 1fr);
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    .cell {
+      width: 16px;
+      height: 16px;
+      font-size: 10px;
+    }
+
+    #currentTurn {
+      font-size: 18px;
+      margin: 8px;
+    }
+
+    .game-button {
+      font-size: 16px;
+      padding: 8px 18px;
+      margin: 5px;
+    }
+
+    .controls {
+      margin-top: 10px;
+    }
+  }
+
+</style>
+
+</head>
+
+<body>
+
+<h1 id="game-title">WORPUZZMONG</h1>
+<p id="game-desc"></p>
+<div class="game-container">
+
+  <div id="gameSection">
+    <div id="currentTurn"></div>
+
+<div class="score-display">
+  <span class="score-computer">컴퓨터 /COMPUTER: <span id="computerScoreNum">0</span></span>  <span class="score-user">사용자 /USER: <span id="userScoreNum">0</span></span>
+</div>
+
+<div id="game"></div>
+
+<div class="controls">
+  <button id="retryBtn" class="game-button">다시 하기/ RETRY</button>
+  <button onclick="location.href='index.html'" class="game-button">홈으로/ HOME</button>
+</div>
+
+  </div>
+
+</div>
+
+<script>
+
+const gridSize = 19;
+const gridHeight = 12;
+const totalCells = gridSize * gridHeight;
+
+// 🎮 게임 상태 변수들
+let board, revealed, wordMap, foundWords, currentPlayer, foundBy, words, usedIndexes;
+let clovers = new Set(), daisies = new Set();
+let resultShown = false;
+let npcTimeoutId = null;
+
+// 📦 DOM 요소 연결
+const gameEl = document.getElementById('game');
+const retryBtn = document.getElementById('retryBtn');
+const gameSection = document.getElementById('gameSection');
+const currentTurnEl = document.getElementById('currentTurn');
+const userScoreEl = document.getElementById('userScoreNum');
+const computerScoreEl = document.getElementById('computerScoreNum');
+
+window.onload = () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const poolFile = urlParams.get('pool');
+  if (!poolFile) {
+    // 긴 단어들을 포함한 기본 단어들 설정
+    words = [
+      'GRANDFATHER', 'GRANDMOTHER', 'GRANDPARENT', 'INTERESTING', 
+      'SUPERMARKET', 'CONVERSATION', 'INFORMATION', 'DESCRIPTION',
+      'UNDERSTANDING', 'INTERNATIONAL', 'ENTERTAINMENT', 'DEVELOPMENT',
+      'HELLO', 'WORLD', 'GAME', 'PLAY', 'WORD', 'PUZZLE', 'FIND', 'SEARCH'
+    ];
+    gameSection.classList.remove('hidden');
+    init();
+    return;
+  }
+
+  fetch('wordpools/' + poolFile + '.json')
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById('game-title').textContent = data.title || '워퍼즈몽 (WORPUZZMONG)';
+      const rawText = data.description || '단어를 찾아서 점수를 얻는 게임입니다.';
+      const htmlText = rawText.replace(/\n/g, '<br>');
+      document.getElementById('game-desc').innerHTML = htmlText;
+
+      words = [];
+      for (let length in data.words) {
+        const count = data.wordCount[length] || 0;
+        words.push(...getRandomSample(data.words[length], count));
+      }
+      console.log('총 단어 수:', words.length);
+      console.log('단어 목록:', words);
+      
+      // 게임 섹션 보이기 및 초기화
+      gameSection.classList.remove('hidden');
+      init();
+    })
+    .catch(err => {
+      // 에러 발생 시 긴 단어들을 포함한 기본 단어들로 진행
+      words = [
+        'GRANDFATHER', 'GRANDMOTHER', 'GRANDPARENT', 'INTERESTING', 
+        'SUPERMARKET', 'CONVERSATION', 'INFORMATION', 'DESCRIPTION',
+        'UNDERSTANDING', 'INTERNATIONAL', 'ENTERTAINMENT', 'DEVELOPMENT',
+        'HELLO', 'WORLD', 'GAME', 'PLAY', 'WORD', 'PUZZLE', 'FIND', 'SEARCH'
+      ];
+      gameSection.classList.remove('hidden');
+      init();
+    });
+};
+
+// 🔀 배열을 무작위로 섞는 함수 (Fisher–Yates 알고리즘)
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+}
+
+// 🎲 배열에서 원하는 개수만큼 랜덤 추출하는 함수
+function getRandomSample(arr, count) {
+  if (count >= arr.length) return [...arr];
+  const shuffled = [...arr];
+  shuffle(shuffled);
+  return shuffled.slice(0, count);
+}
+
+function init() {
+  board = Array(totalCells).fill(null);
+  revealed = Array(totalCells).fill(false);
+  wordMap = {};
+  foundWords = new Set();
+  foundBy = { user: 0, computer: 0 };
+  currentPlayer = 'user';
+  usedIndexes = new Set();
+  clovers.clear();
+  daisies.clear();
+  resultShown = false;
+
+  // 타이머 정리
+  if (npcTimeoutId) {
+    clearTimeout(npcTimeoutId);
+    npcTimeoutId = null;
+  }
+
+  createGrid();
+  
+  // 긴 단어부터 먼저 배치하는 전략
+  if (placeAllWordsLongFirst()) {
+    console.log('모든 단어가 성공적으로 배치되었습니다 (긴 단어 우선)');
+  } else {
+    console.log('긴 단어 우선 배치 실패 - 기본 배치로 진행');
+    // 기본 배치 로직
+    let placedWords = [];
+    shuffle(words);
+    
+    for (let word of words) {
+      let placed = false;
+      for (let attempt = 0; attempt < 1000; attempt++) {
+        if (placeWord(word)) {
+          placedWords.push(word);
+          placed = true;
+          break;
+        }
+      }
+      if (!placed) {
+        console.log('배치 실패한 단어:', word);
+      }
+    }
+    console.log('실제 배치된 단어 수:', placedWords.length);
+  }
+  
+  // 데이지 5%, 클로버 10% 배치
+  const daisyCount = Math.round(totalCells * 0.05);
+  const cloverCount = Math.round(totalCells * 0.10);
+  
+  placeDaisies(daisyCount);
+  placeClovers(cloverCount);
+  fillEmptyCells();
+  updateScore();
+  updateTurnDisplay();
+  
+  checkGameEnd();
+}
+
+function createGrid() {
+  gameEl.innerHTML = '';
+  for (let i = 0; i < totalCells; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'cell';
+    cell.onclick = () => { if (!resultShown) handleClick(i); };
+    gameEl.appendChild(cell);
+  }
+}
+
+function canPlaceWord(word, x, y, dx, dy) {
+  // 경계 확인 개선
+  const endX = x + dx * (word.length - 1);
+  const endY = y + dy * (word.length - 1);
+  
+  if (endX < 0 || endY < 0 || endX >= gridSize || endY >= gridHeight) return false;
+  
+  for (let i = 0; i < word.length; i++) {
+    let nx = x + dx * i;
+    let ny = y + dy * i;
+    let idx = ny * gridSize + nx;
+    
+    // 이미 다른 문자가 있고 현재 문자와 다르면 배치 불가
+    if (board[idx] && board[idx] !== word[i]) return false;
+    
+    // 이미 다른 단어에 의해 사용된 위치면 배치 불가
+    if (usedIndexes.has(idx)) return false;
+  }
+  return true;
+}
+
+function placeWord(word) {
+  const directions = [
+    { x: 1, y: 0 },   // 가로 (오른쪽)
+    { x: 0, y: 1 },   // 세로 (아래)
+    { x: 1, y: 1 },   // 대각선 (오른쪽 아래)
+  ];
+  
+  // 방향을 섞어서 다양성 확보
+  const shuffledDirections = directions.sort(() => Math.random() - 0.5);
+  
+  // 시작 위치를 무작위로 시도
+  const positions = [];
+  for (let y = 0; y < gridHeight; y++) {
+    for (let x = 0; x < gridSize; x++) {
+      positions.push({x, y});
+    }
+  }
+  shuffle(positions);
+ 
+  for (let dir of shuffledDirections) {
+    for (let pos of positions) {
+      if (canPlaceWord(word, pos.x, pos.y, dir.x, dir.y)) {
+        let positions = [];
+        for (let i = 0; i < word.length; i++) {
+          let nx = pos.x + dir.x * i;
+          let ny = pos.y + dir.y * i;
+          let idx = ny * gridSize + nx;
+          board[idx] = word[i];
+          usedIndexes.add(idx);
+          positions.push(idx);
+        }
+        wordMap[word] = {
+          positions: positions,
+          direction: [dir.x, dir.y]
+        };
+        console.log(`단어 "${word}" 배치 완료 (${pos.x},${pos.y}) 방향(${dir.x},${dir.y})`);
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
+function checkDirectionVariety() {
+  let directionCount = {
+    '1,0': 0,    // 가로
+    '0,1': 0,    // 세로
+    '1,1': 0     // 대각선
+  };
+  
+  for (let word in wordMap) {
+    const direction = wordMap[word].direction;
+    const key = direction[0] + ',' + direction[1];
+    if (directionCount.hasOwnProperty(key)) {
+      directionCount[key]++;
+    }
+  }
+  
+  console.log('방향별 사용 횟수:', directionCount);
+  return directionCount['1,0'] > 0 && directionCount['0,1'] > 0 && directionCount['1,1'] > 0;
+}
+
+// 긴 단어부터 배치하는 새로운 함수
+function placeAllWordsLongFirst() {
+  let attempts = 0;
+  const maxAttempts = 15;
+  
+  do {
+    board = Array(totalCells).fill(null);
+    usedIndexes.clear();
+    wordMap = {};
+    
+    // 긴 단어부터 배치 (길이 순으로 정렬)
+    const sortedWords = [...words].sort((a, b) => b.length - a.length);
+    console.log('배치 순서 (길이별):', sortedWords.map(w => `${w}(${w.length})`));
+    
+    let allPlaced = true;
+    for (let word of sortedWords) {
+      if (!placeWord(word)) {
+        console.log(`배치 실패: ${word} (길이: ${word.length})`);
+        allPlaced = false;
+        break;
+      }
+    }
+    
+    if (allPlaced && checkDirectionVariety()) {
+      console.log(`성공! ${attempts + 1}번째 시도에서 모든 단어 배치 및 3방향 모두 사용됨`);
+      return true;
+    }
+    
+    attempts++;
+    console.log(`${attempts}번째 시도 실패 - 다시 시도`);
+  } while (attempts < maxAttempts);
+  
+  console.log('최대 시도 횟수 초과 - 기본 배치로 진행');
+  return false;
+}
+
+function placeClovers(count) {
+  let placed = 0;
+  let attempts = 0;
+  while (placed < count && attempts < 1000) {
+    const idx = Math.floor(Math.random() * totalCells);
+    if (!usedIndexes.has(idx) && !clovers.has(idx) && !daisies.has(idx)) {
+      if (isSafeForSpecial(idx)) {
+        clovers.add(idx);
+        placed++;
+      }
+    }
+    attempts++;
+  }
+  console.log('배치된 클로버 수:', clovers.size);
+}
+
+function placeDaisies(count) {
+  let placed = 0;
+  let attempts = 0;
+  while (placed < count && attempts < 1000) {
+    const idx = Math.floor(Math.random() * totalCells);
+    if (!usedIndexes.has(idx) && !clovers.has(idx) && !daisies.has(idx)) {
+      if (isSafeForSpecial(idx)) {
+        daisies.add(idx);
+        placed++;
+      }
+    }
+    attempts++;
+  }
+  console.log('배치된 데이지 수:', daisies.size);
+}
+
+function isSafeForSpecial(idx) {
+  const x = idx % gridSize;
+  const y = Math.floor(idx / gridSize);
+  
+  for (let dy = -1; dy <= 1; dy++) {
+    for (let dx = -1; dx <= 1; dx++) {
+      if (dx === 0 && dy === 0) continue;
+      const nx = x + dx;
+      const ny = y + dy;
+      if (nx >= 0 && nx < gridSize && ny >= 0 && ny < gridHeight) {
+        const nIdx = ny * gridSize + nx;
+        if (clovers.has(nIdx) || daisies.has(nIdx)) {
+          return false;
+        }
+      }
+    }
+  }
+  return true;
+}
+
+function fillEmptyCells() {
+  const filler = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+  shuffle(filler);
+  let i = 0;
+  for (let j = 0; j < totalCells; j++) {
+    if (!board[j] && !clovers.has(j) && !daisies.has(j)) {
+      board[j] = filler[i++ % filler.length];
+    }
+  }
+}
+
+function reveal(index) {
+  if (revealed[index]) return;
+  revealed[index] = true;
+  const cell = gameEl.children[index];
+  
+  if (clovers.has(index)) {
+    cell.textContent = '🍀';
+    const directions = [-gridSize, gridSize, -1, 1];
+    for (let d of directions) {
+      const newIdx = index + d;
+      if (newIdx >= 0 && newIdx < totalCells) {
+        if (d === -1 || d === 1) {
+          if (Math.floor(index / gridSize) === Math.floor(newIdx / gridSize)) {
+            reveal(newIdx);
+          }
+        } else {
+          reveal(newIdx);
+        }
+      }
+    }
+  } else if (daisies.has(index)) {
+    cell.textContent = '🌼';
+    const x = index % gridSize;
+    const y = Math.floor(index / gridSize);
+    for (let dy = -1; dy <= 1; dy++) {
+      for (let dx = -1; dx <= 1; dx++) {
+        if (dx === 0 && dy === 0) continue;
+        const nx = x + dx;
+        const ny = y + dy;
+        if (nx >= 0 && nx < gridSize && ny >= 0 && ny < gridHeight) {
+          const nIdx = ny * gridSize + nx;
+          if (!revealed[nIdx]) reveal(nIdx);
+        }
+      }
+    }
+  } else {
+    cell.textContent = board[index];
+  }
+  cell.classList.add('revealed');
+}
+
+function updateScore() {
+  userScoreEl.textContent = foundBy.user;
+  computerScoreEl.textContent = foundBy.computer;
+}
+
+function updateTurnDisplay() {
+  if (resultShown) return;
+  const name = currentPlayer === 'user' ? 'USER' : 'COMPUTER';
+  currentTurnEl.textContent = `It is ${name}'s turn.`;
+}
+
+function switchTurn(extra) {
+  if (!extra) {
+    currentPlayer = currentPlayer === 'user' ? 'computer' : 'user';
+  }
+  updateTurnDisplay();
+  
+  // 🤖 컴퓨터 턴이면 자동 플레이
+  if (currentPlayer === 'computer' && !resultShown) {
+    npcTimeoutId = setTimeout(() => {
+      computerMove();
+    }, 1000); // 1초 후 컴퓨터 행동
+  }
+}
+
+// 🤖 컴퓨터 랜덤 클릭 함수
+function computerMove() {
+  if (resultShown) return;
+  
+  // 아직 열리지 않은 셀들 찾기
+  const availableCells = [];
+  for (let i = 0; i < totalCells; i++) {
+    if (!revealed[i]) {
+      availableCells.push(i);
+    }
+  }
+  
+  if (availableCells.length === 0) return;
+  
+  // 랜덤으로 셀 선택
+  const randomIndex = Math.floor(Math.random() * availableCells.length);
+  const selectedCell = availableCells[randomIndex];
+  
+  console.log('컴퓨터가 선택한 셀:', selectedCell);
+  handleClickInternal(selectedCell, 'computer'); // 컴퓨터 클릭임을 명시
+}
+
+function handleClick(index) {
+  // 사용자 클릭은 사용자 턴일 때만 허용
+  if (currentPlayer !== 'user' || revealed[index] || resultShown) return;
+  
+  handleClickInternal(index, 'user');
+}
+
+function handleClickInternal(index, player) {
+  if (revealed[index] || resultShown) return;
+
+  // 현재 플레이어를 명시적으로 설정
+  currentPlayer = player;
+  
+  const extra = clovers.has(index) || daisies.has(index);
+  reveal(index);
+  checkWords();
+  checkGameEnd();
+
+  if (!resultShown) {
+    switchTurn(extra);
+  }
+}
+
+function checkWords() {
+  for (let word of Object.keys(wordMap)) {
+    if (foundWords.has(word)) continue;
+    const pos = wordMap[word].positions;
+    if (pos.every(i => revealed[i])) {
+      foundWords.add(word);
+      foundBy[currentPlayer]++;
+      pos.forEach(i => {
+        const cell = gameEl.children[i];
+        cell.classList.add(
+          currentPlayer === 'user' ? 'word-owned-user' : 'word-owned-computer'
+        );
+      });
+      updateScore();
+      console.log(`${currentPlayer}가 단어 "${word}" 발견!`);
+    }
+  }
+}
+
+function checkGameEnd() {
+  const totalWords = Object.keys(wordMap).length;
+  if (foundWords.size >= totalWords && totalWords > 0) {
+    resultShown = true;
+    
+    // 타이머 정리
+    if (npcTimeoutId) {
+      clearTimeout(npcTimeoutId);
+      npcTimeoutId = null;
+    }
+    
+    const userWords = foundBy.user;
+    const computerWords = foundBy.computer;
+    let winner = '';
+    
+    if (userWords > computerWords) {
+      winner = 'USER WINS!';
+    } else if (computerWords > userWords) {
+      winner = 'COMPUTER WINS!';
+    } else {
+      winner = 'DRAW!';
+    }
+    
+    currentTurnEl.textContent = `Game Over! ${winner}`;
+    
+    setTimeout(() => {
+      alert(`Game Over!\n\nUSER: ${userWords} words\nCOMPUTER: ${computerWords} words\n\n${winner}`);
+    }, 500);
+  }
+}
+
+// 🔄 다시하기 버튼
+retryBtn.onclick = () => {
+  init();
+};
+
+</script>
+
+</body>
+</html>

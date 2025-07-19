@@ -1,0 +1,36 @@
+
+{
+"__comment": "e9",  
+"title": " WORPUZZMONG MIMETIC WORDS",
+
+"description": "Find the onomatopoeic and ideophonic words hidden horizontally, vertically, and diagonally in the grid!\nIf you spot a four-leaf clover 🍀, you earn an extra turn!\nIf you spot a daisy 🌼, you earn an extra turn.\nCompete against the computer — whoever finds the most wins!",
+
+  "words": {
+    "3":["AHA","MEH","NAP","NIX"],
+"4": ["ALAS","DART","DASH","FLAP","FLIP","FLOP","GAGA","GLOW","HIYA","JINK","JUMP","LIMP","LULL","MAMA","SWAY","ZOOM"
+],
+"5": ["BLINK","COWER","CRAWL","CREEP","FIZZY","FLASH","FLUFF","FLUMP","GLEAM","GLINT","HOVER","LURCH","NUDGE","SNEAK","STRUT","THROB","TWIRL"
+],
+      
+"6": ["BLABLA","BOUNCE","DANGLE","DAZZLE","FIDGET","JABBER","JITTER","MUMBLE","MURMUR","NATTER","NODNOD","POOPOO","SCURRY","SHIMMY","SHIVER","SQUIRM","SQUISH","SWOOSH","TIPTAP","TIPTOE","TODDLE","WADDLE","WIGGLE","WOBBLE"
+],
+
+"7":["CHUCKLE","DRIZZLE","FLICKER","FLUTTER","GLIMMER","GLITTER","JEEPERS","PITAPAT","SCAMPER","SHIMMER","SHUFFLE","SLITHER","SPARKLE","STAGGER","TREMBLE","TWINKLE"
+
+],
+"8":["FLIMFLAM","FLIPFLOP","ROLLROLL","SQUABBLE","TILTTILT","BLINGBLING","BLOOBBLOOB"
+],
+"9":[
+"BLINGBLING","BLOOBBLOOB","CHICKABIDDY"]
+
+},
+  "wordCount": {
+"3":2,
+"4":3,   
+ "5":3,
+"6":3,
+"7":3,
+"8":2,
+"9":1  }
+}
+

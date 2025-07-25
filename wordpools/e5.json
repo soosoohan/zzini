@@ -1,10 +1,10 @@
 
 {
 "__comment": "e5",  
-"title": "WORPUZZMONG C1 Oxford Advanced",
+"title": "WORPUZZMONG ",
 
 
-"description": "Find the words hidden horizontally, vertically, and diagonally in the grid!\nIf you spot a four-leaf clover 🍀, you earn an extra turn!\nIf you spot a daisy 🌼, you earn an extra turn!\nCompete against the computer — whoever finds the most wins!",
+"description": "C1 Oxford Advanced",
 
   "words": {
     "4": ["ARM","ASH","BAT","BAY","BOW","COP","DAM","DIP","DUB","DUO","EGO","FIT","GUT","LAD","LAP","LOG","MOB","NET","NOD","OPT","PAD","PIT","POP","RAY","RIP","ROD","SAY","SIN","SPY","SUE","TOP","VOW","WIT",

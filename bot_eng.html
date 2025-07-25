@@ -210,8 +210,9 @@ const wrongGuessesEl = document.getElementById('wrongGuesses');
 window.onload = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const poolFile = urlParams.get('pool');
-  
-  if (!poolFile) {
+
+
+if (!poolFile) {
     // 기본 단어들 설정
     words = [
       'GRANDFATHER', 'GRANDMOTHER', 'GRANDPARENT', 'INTERESTING', 
@@ -219,29 +220,46 @@ window.onload = () => {
       'UNDERSTANDING', 'INTERNATIONAL', 'ENTERTAINMENT', 'DEVELOPMENT',
       'HELLO', 'WORLD', 'GAME', 'PLAY', 'WORD', 'PUZZLE', 'FIND', 'SEARCH'
     ];
-    console.log('기본 단어로 설정됨:', words.length + '개');
-    // 바로 게임 시작
-    startGame();
-    return;
-  }
 
-  // 워드풀 파일 로딩 시뮬레이션 (실제 파일이 없으므로)
-  console.log('워드풀 파일 로딩 시도:', poolFile);
-  
-  // 실제 환경에서는 fetch를 사용하지만, 여기서는 기본값 사용
-  words = [
+ console.log('기본 단어 목록 사용');
+    startGame(); // 바로 게임 시작
+    return;
+  } 
+
+
+  // 워드풀 파일 로딩
+  fetch('wordpools/' + poolFile + '.json')
+    .then(res => {
+      if (!res.ok) throw new Error('워드풀 파일을 찾을 수 없습니다');
+      return res.json();
+    })
+    .then(data => {
+      document.getElementById('game-title').textContent = data.title || '워퍼즈메이트';
+      const rawText = data.description || '단어 찾기 게임';
+      const htmlText = rawText.replace(/\n/g, '<br>');
+      document.getElementById('game-desc').innerHTML = htmlText;
+
+      words = [];
+      for (let length in data.words) {
+        const count = data.wordCount[length] || 0;
+        words.push(...getRandomSample(data.words[length], count));
+      }
+      console.log('총 단어 수:', words.length);
+      console.log('단어 목록:', words);
+      startGame(); // 로딩 완료 후 바로 게임 시작
+    })
+    .catch(err => {
+      console.error('워드풀 로딩 오류:', err);
+      // 오류 발생 시 기본 단어 사용
+      words = [
     'GRANDFATHER', 'GRANDMOTHER', 'GRANDPARENT', 'INTERESTING', 
     'SUPERMARKET', 'CONVERSATION', 'INFORMATION', 'DESCRIPTION',
     'UNDERSTANDING', 'INTERNATIONAL', 'ENTERTAINMENT', 'DEVELOPMENT',
     'HELLO', 'WORLD', 'GAME', 'PLAY', 'WORD', 'PUZZLE', 'FIND', 'SEARCH'
-  ];
-  
-  document.getElementById('game-title').textContent = 'WORPUZZ ZZINI';
-  document.getElementById('game-desc').innerHTML = '단어 찾기 게임';
-  console.log('워드풀 로딩 완료 (시뮬레이션)');
-  
-  // 페이지 로드 후 바로 게임 시작
-  startGame();
+  ];  
+ document.getElementById('game-desc').innerHTML = '워드풀 로딩 실패 - 기본 단어로 진행합니다';
+      startGame(); // 기본 단어로 게임 시작
+    });
 };
 
 function shuffle(arr) {

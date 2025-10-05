@@ -701,13 +701,13 @@ p {
 
     function updateTurnDisplay() {
       if (!gameStarted) return;
-      currentPlayerName = currentPlayer === 'player1' ? player2 : player1;
+      currentPlayerName = currentPlayer === 'player1' ? player1 : player2;
       currentTurnEl.textContent = `It is ${currentPlayerName}'s turn.`;
     }
 
     function switchTurn(extra) {
       if (!extra) {
-        currentPlayer = currentPlayer === 'player1' ? 'player2' : 'player1';
+        currentPlayer = currentPlayer === 'player1' ? 'player1' : 'player2';
       }
       updateTurnDisplay();
     }

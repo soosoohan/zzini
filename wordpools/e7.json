@@ -2,9 +2,9 @@
 
 {
 "__comment": "e7",  
-"title": "WORPUZZMONG ORGANISM",
+"title": "WORPUZZ ZZINI",
 
-"description": "Find the names of the organisms hidden in rows, columns, and diagonals.\nIf you spot a four-leaf clover 🍀, you earn an extra turn!\nIf you spot a daisy 🌼, you earn an extra turn.\nCompete against the computer — whoever finds the most wins!",
+"description": "ORGANISM",
 
   "words": {
     "4": ["ASH","CAT","COD","COW","DOG","EEL","ELK","ELM","EMU","EWE","FIG","FIR","FOX","HEN","HOG","IVY","OAK","OWL","PIG","RAM","SOW","YAK","YAM","YEW",

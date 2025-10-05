@@ -77,12 +77,12 @@
     margin: 5px;
   }
   
-   p {
+  p {
     font-size: clamp(14px, 3vw, 18px);
     color: #064d4d;
     margin: 5px;
 }
-  .game-container {
+    .game-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -267,12 +267,13 @@
     } 
   }
   
+  
 </style>
 </head>
 
 <body>
-
-  <div class="screen-warning" id="warning">
+  
+    <div class="screen-warning" id="warning">
     <h2>Screen Too Small</h2>
     <p>This game is a mode where two users compete on a large grid, designed to be played on screens of at least 800px or larger.
 </p>
@@ -281,7 +282,7 @@
     <p>800px 보다 작은 화면에서는 워퍼즈메이트를 이용하세요</p>
  <button onclick="location.href='https://worpuzzmate.vercel.app'" class="game-button">Play Worpuzzmate<br> 워퍼즈메이트 하러가기</button>
   </div>
- 
+
 <h1 id="game-title">게임 제목</h1>
 <p id="game-desc">게임 설명</p>
 
@@ -400,9 +401,10 @@ window.onload = () => {
   document.body.innerHTML = '<p>❌ 워드풀 로딩 중 오류 발생: ' + err.message + '</p>';
 });
 
-const gridWidth = 19;
-const gridHeight = 12;
-const totalCells = gridWidth * gridHeight;
+
+  const gridWidth = 19;
+  const gridHeight = 12;
+  const totalCells = gridWidth * gridHeight;
   let board, revealed, wordMap, foundWords, currentPlayer, foundBy, words, usedIndexes;
   let clovers = new Set(), daisies = new Set(), resultShown = false, gameStarted = false;
   let player1 = "플레이어1", player2 = "플레이어2", currentPlayerName = "", wrongGuesses = [];

@@ -701,7 +701,7 @@ p {
 
     function updateTurnDisplay() {
       if (!gameStarted) return;
-      currentPlayerName = currentPlayer === 'player1' ? player1 : player2;
+      currentPlayerName = currentPlayer === 'player1' ? player2 : player1;
       currentTurnEl.textContent = `It is ${currentPlayerName}'s turn.`;
     }
 

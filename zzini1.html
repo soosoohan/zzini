@@ -367,6 +367,26 @@ document.addEventListener('touchend', function(event) {
   lastTouchEnd = now;
 }, false);
 
+const gridWidth = 19;
+const gridHeight = 12;
+const totalCells = gridWidth * gridHeight;
+  let board, revealed, wordMap, foundWords, currentPlayer, foundBy, words, usedIndexes;
+  let clovers = new Set(), daisies = new Set(), resultShown = false, gameStarted = false;
+  let player1 = "플레이어1", player2 = "플레이어2", currentPlayerName = "", wrongGuesses = [];
+
+  const gameEl = document.getElementById('game');
+  const player1ScoreEl = document.getElementById('player1Score');
+  const player2ScoreEl = document.getElementById('player2Score');
+  const retryBtn = document.getElementById('retryBtn');
+  const startBtn = document.getElementById('startBtn');
+  const gameSection = document.getElementById('gameSection');
+  const currentTurnEl = document.getElementById('currentTurn');
+  const guessInput = document.getElementById('guessInput');
+  const guessBtn = document.getElementById('guessBtn');
+  const wrongListEl = document.getElementById('wrongList');
+  const wrongGuessesEl = document.getElementById('wrongGuesses');
+
+
 window.onload = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const poolFile = urlParams.get('pool');
@@ -399,25 +419,6 @@ window.onload = () => {
 .catch(err => {
   document.body.innerHTML = '<p>❌ 워드풀 로딩 중 오류 발생: ' + err.message + '</p>';
 });
-
-const gridWidth = 19;
-const gridHeight = 12;
-const totalCells = gridWidth * gridHeight;
-  let board, revealed, wordMap, foundWords, currentPlayer, foundBy, words, usedIndexes;
-  let clovers = new Set(), daisies = new Set(), resultShown = false, gameStarted = false;
-  let player1 = "플레이어1", player2 = "플레이어2", currentPlayerName = "", wrongGuesses = [];
-
-  const gameEl = document.getElementById('game');
-  const player1ScoreEl = document.getElementById('player1Score');
-  const player2ScoreEl = document.getElementById('player2Score');
-  const retryBtn = document.getElementById('retryBtn');
-  const startBtn = document.getElementById('startBtn');
-  const gameSection = document.getElementById('gameSection');
-  const currentTurnEl = document.getElementById('currentTurn');
-  const guessInput = document.getElementById('guessInput');
-  const guessBtn = document.getElementById('guessBtn');
-  const wrongListEl = document.getElementById('wrongList');
-  const wrongGuessesEl = document.getElementById('wrongGuesses');
 
   function shuffle(arr) {
     for (let i = arr.length - 1; i > 0; i--) {

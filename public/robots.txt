@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://zzini.vercel.app/sitemap.xml

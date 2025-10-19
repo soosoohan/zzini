@@ -712,8 +712,8 @@ p {
     }
 
     function updateScore() {
-      player1ScoreEl.innerHTML = `<strong>${player1}</strong><br><br>` + foundBy.player1.map(w => `✓ ${w}`).join("<br>");
-      player2ScoreEl.innerHTML = `<strong>${player2}</strong><br><br>` + foundBy.player2.map(w => `✓ ${w}`).join("<br>");
+      player1ScoreEl.innerHTML = `<strong>${player1}</strong><br><br>` + foundBy.player1.map(w => ` ${w}`).join("<br>");
+      player2ScoreEl.innerHTML = `<strong>${player2}</strong><br><br>` + foundBy.player2.map(w => ` ${w}`).join("<br>");
     }
 
     function updateTurnDisplay() {

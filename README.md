@@ -32,6 +32,11 @@ Created a two-player competitive version of Worpuzz called WorpuzzMate and uploa
 - **2025-06-17**  
 컴퓨터와 대결하는 기존 게임을 파스텔 컬러로 리디자인하여  업로드함.  
 Redesigned the original game with pastel colors and uploaded it.    
+
+- **2025-07-19**  
+워퍼즈메이트의  격자를 크게 만들어서 워퍼즈찌니라는 이름으로 깃허브에 올림   
+Released Worpuzz-zzini on GitHub with an expanded grid size from Worpuzz-mate    
+
 ---
 
 ### 🔎 How to Play  

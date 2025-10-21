@@ -5,37 +5,16 @@
 It’s playable in both Korean and English!  
 The game will continue to be improved and upgraded.  
 
->---
->
-> 🛡️ **이 게임은 저작권 등록이 완료되었습니다.**  
-> 무단 복제, 무단 이용, 상업적 사용은 법적 책임을 초래할 수 있습니다.  
->  
-> 🛡️ **This game has been officially copyright registered.**  
-> Unauthorized reproduction, use, or commercial distribution may result in legal consequences.  
->
-> ----
+---
 
-### 📅 개발 타임라인 / Development Timeline
+ 🛡️ **이 게임은 저작권 등록이 완료되었습니다.**  
+ 무단 복제, 무단 이용, 상업적 사용은 법적 책임을 초래할 수 있습니다.  
+  
+ 🛡️ **This game has been officially copyright registered.**  
+ Unauthorized reproduction, use, or commercial distribution may result in legal consequences.  
 
-- **2025-05-01**  
-오랫동안 생각만 했던 아이디어를 직접 구현해보기로 결심하고 개발 시작
-Decided to turn a long-time idea into reality and began development.   
-
-- **2025-05-31**  
-내가 만든 첫번째 컴퓨터 게임 워퍼즈 탄생  
-The Birth of Worpuzz — My Very First Computer Game  
-
-- **2025-06-14**  
-두 사용자가 대결하는 형태의 워퍼즈메이트를 만들어  업로드함.  
-Created a two-player competitive version of Worpuzz called WorpuzzMate and uploaded it
-
-- **2025-06-17**  
-컴퓨터와 대결하는 기존 게임을 파스텔 컬러로 리디자인하여  업로드함.  
-Redesigned the original game with pastel colors and uploaded it.    
-
-- **2025-07-19**  
-워퍼즈메이트의  격자를 크게 만들어서 워퍼즈찌니라는 이름으로 깃허브에 올림   
-Released Worpuzz-zzini on GitHub with an expanded grid size from Worpuzz-mate    
+----
+## Play zzini : https://soosooland.com/zzini/
 
 ---
 

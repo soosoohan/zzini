@@ -34,8 +34,12 @@ The game will continue to be improved and upgraded.
 ✅ Playable in both Korean and English!
 
 ---
-워퍼즈 찌니 주소 : https://soosooland.com/zzini/     
-## 🌟 Soosooland - Game Hub by Han Soosoo
+
+## 워퍼즈 찌니 주소 : https://soosooland.com/zzini/  
+
+---
+
+## 🌟 Soosooland - Puzzle Game Hub by Han Soosoo
 
  "Learning through fun, and fun through learning."
 

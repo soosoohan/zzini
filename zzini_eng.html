@@ -88,6 +88,15 @@ body {
   color: #666;
   line-height: 1.6;
 }
+/* 부모 div에 적용 */
+.game-header {
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+#game-title, #game-desc {
+  margin: 0;
+  padding: 0;
+}
 
 h1 {
   font-size: clamp(18px, 4vw, 24px);
@@ -289,8 +298,6 @@ p {
     order: 2;
   } 
 }
-
-
   </style>
 </head>
 
@@ -303,10 +310,10 @@ p {
     <p>800px 보다 작은 화면에서는 워퍼즈메이트를 이용하세요</p>
     <button onclick="location.href='https://worpuzzmate.vercel.app'" class="game-button">Play Worpuzzmate<br> 워퍼즈메이트 하러가기</button>
   </div>
-
+<div class="game-header"> 
   <h1 id="game-title">게임 제목</h1>
   <p id="game-desc">게임 설명</p>
-
+</div>
   <div class="game-container" id="game-container">
     <div id="gameSection" class="hidden">
       <div id="currentTurn"></div>

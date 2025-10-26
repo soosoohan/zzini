@@ -87,7 +87,15 @@ body {
   color: #666;
   line-height: 1.6;
 }
-
+#game-title {
+  display: inline;
+  margin-right: 10px;
+}
+#game-desc {
+  display: inline;
+  font-size: 0.9em;
+  color: #666;
+}
 h1 {
   font-size: clamp(18px, 4vw, 24px);
   font-weight: bold;
@@ -302,15 +310,13 @@ p {
     <p>800px 보다 작은 화면에서는 워퍼즈메이트를 이용하세요</p>
     <button onclick="location.href='https://worpuzzmate.vercel.app'" class="game-button">Play Worpuzzmate<br> 워퍼즈메이트 하러가기</button>
   </div>
-
+<div class="game-header"> 
   <h1 id="game-title">게임 제목</h1>
   <p id="game-desc">게임 설명</p>
-
+</div>
   <div class="game-container" id="game-container">
     <div id="gameSection" class="hidden">
       <div id="currentTurn"></div>
-
-
   <div class="guess-section">
     <input type="text" id="guessInput" placeholder="추측한 단어 입력" />
     <button id="guessBtn" class="game-button">제출</button>
@@ -327,8 +333,8 @@ p {
   </div>
 
   <div class="controls">
-    <button id="retryBtn" class="game-button">재시작</button>
-    <button onclick="location.href='index.html'" class="game-button">홈으로</button>
+    <button id="retryBtn" class="game-button">↻ 다시 시작</button>
+    <button onclick="location.href='index.html'" class="game-button">← Back</button>
   </div>
 </div>
 

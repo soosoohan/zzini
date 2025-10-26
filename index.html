@@ -138,46 +138,31 @@ margin: 20px auto;
 max-width: 600px;
 font-size: 1.1em;
 }
-.square-button {
-      width: 250px;
-            height: 45px;
-            background-color: #FFB3D9; /* 연분홍 */
-            color: white;
-            border: none;
-            border-radius: 12px; /* 둥근 모서리 */
-            cursor: pointer;
-            font-size: clamp(1rem, 3vw, 1.3rem);
-            font-weight: bold;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            line-height: 1.2;
-            margin: 8px;
-            transition: all 0.3s ease;
-            font-family: Arial, sans-serif;
+
+  .back-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        padding: 10px 20px;
+        font-size: 1em;
+        background-color: #FFD6BA;
+        color: #7A2E2E;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 100;
     }
 
-.square-button:hover {
-        background-color: #FF8FAB; /* 호버 시 진한 분홍 */
-        transform: scale(1.05);
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-
-.square-button:active {
-        transform: scale(0.95);
-    }
-.credits {
-        margin-top: 50px;
-        font-size: 0.85em;
-        color:#FF9494;
-        background-color:#FFF2EB;
-        padding: 20px;
-        border-radius: 10px;
+    .back-button:hover {
+        background-color: #FF9494;
+        color: white;
     }
 </style>
 </head>
 <body>
+  <button class="back-button" onclick="location.href='https://soosooland.com/'">
+    Soosooland </button>
   <h1>WORPUZZ ZZINI </h1>
   <div class="description">
     두 사용자가  교대로 격자를 클릭하여 숨겨진 단어를 찾아가는 2인용 단어 찾기 게임입니다.<br>

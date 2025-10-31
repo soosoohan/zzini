@@ -46,7 +46,12 @@
 }
 </script>
 <style>
-body {
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+ }
+    body {
     font-family: 'Noto Sans KR', sans-serif;
     background-color: #FFF2EB; /* 전체 배경: 피치 크림톤 */
     margin: 0;
@@ -54,6 +59,25 @@ body {
     text-align: center;
     color: #7A2E2E; /* 기본 텍스트: 부드러운 브라운 */
   }
+.back-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        padding: 10px 20px;
+        font-size: 1em;
+        background-color: #FFD6BA;
+        color: #7A2E2E;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 100;
+    }
+
+    .back-button:hover {
+        background-color: #FF9494;
+        color: white;
+    }
 h1 {
 font-size: clamp(1.3rem, 3.7vw, 1.9rem);
 color: #FF9494; /* 포인트 핑크 */
@@ -139,25 +163,6 @@ max-width: 600px;
 font-size: 1.1em;
 }
 
-  .back-button {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        padding: 10px 20px;
-        font-size: 1em;
-        background-color: #FFD6BA;
-        color: #7A2E2E;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        z-index: 100;
-    }
-
-    .back-button:hover {
-        background-color: #FF9494;
-        color: white;
-    }
 </style>
 </head>
 <body>

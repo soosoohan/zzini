@@ -1,27 +1,27 @@
 {
 "__comment": "e9",
-  "title": "WORPUZZ ZZINI",
+  "title": "WORPUZZ MONG",
 
-"description": "states capitals",
+"description": "STATES CAPITALS",
 
   "words": {
-    "5": ["Iowa", "Ohio", "Utah", "Boise", "Dover", "Fargo", "Idaho", "Maine", "Omaha", "Salem", "Texas"],
+    "5": ["IOWA", "OHIO", "UTAH", "BOISE", "DOVER", "FARGO", "IDAHO", "MAINE", "OMAHA", "SALEM", "TEXAS"],
     
-    "6": ["Alaska", "Albany", "Austin", "Boston", "Denver", "Hawaii", "Helena", "Juneau", "Kansas", "Nevada", "Newark", "Oregon", "Pierre", "Topeka", "Wichta"],
+    "6": ["ALASKA", "ALBANY", "AUSTIN", "BOSTON", "DENVER", "HAWAII", "HELENA", "JUNEAU", "KANSAS", "NEVADA", "NEWARK", "OREGON", "PIERRE", "TOPEKA", "WICHTA"],
     
-    "7": ["Alabama", "Arizona", "Atlanta", "Augusta", "Chicago", "Concord", "Detroit", "Florida", "Georgia", "Houston", "Indiana", "Jackson", "Lansing", "Lincoln", "Madison", "Memphis", "Montana", "Olympia", "Phoenix", "Raleigh", "Seattle", "Trenton", "Vermont", "Wyoming"],
+    "7": ["ALABAMA", "ARIZONA", "ATLANTA", "AUGUSTA", "CHICAGO", "CONCORD", "DETROIT", "FLORIDA", "GEORGIA", "HOUSTON", "INDIANA", "JACKSON", "LANSING", "LINCOLN", "MADISON", "MEMPHIS", "MONTANA", "OLYMPIA", "PHOENIX", "RALEIGH", "SEATTLE", "TRENTON", "VERMONT", "WYOMING"],
 
-    "8": ["Arkansas", "Billings", "Bismarck", "Cheyenne", "Colorado", "Columbia", "Columbus", "Delaware", "Hartford", "Honolulu", "Illinois", "Kentucky", "Maryland", "Michigan", "Missouri", "Nebraska", "New_York", "Oklahoma", "Portland", "Richmond", "Santa_Fe", "St.Louis", "Virginia"],
+    "8": ["ARKANSAS", "BILLINGS", "BISMARCK", "CHEYENNE", "COLORADO", "COLUMBIA", "COLUMBUS", "DELAWARE", "HARTFORD", "HONOLULU", "ILLINOIS", "KENTUCKY", "MARYLAND", "MICHIGAN", "MISSOURI", "NEBRASKA", "NEW_YORK", "OKLAHOMA", "PORTLAND", "RICHMOND", "SANTA_FE", "ST.LOUIS", "VIRGINIA"],
 
-    "9": ["Anchorage", "Annapolis", "Baltimore", "Charlotte", "Frankfort", "Las Vegas", "Louisiana", "Milwaukee", "Minnesota", "Nashville", "Tennessee", "Wisconsin"],
+    "9": ["ANCHORAGE", "ANNAPOLIS", "BALTIMORE", "CHARLOTTE", "FRANKFORT", "LAS VEGAS", "LOUISIANA", "MILWAUKEE", "MINNESOTA", "NASHVILLE", "TENNESSEE", "WISCONSIN"],
 
-    "10": ["Birmingham", "Bridgeport", "Burlington", "California", "Charleston", "Conneticut", "Des_Moines", "Harrisburg", "Louisville", "Manchester", "Montgomery", "Montpelier", "New_Jersey", "New_Mexico", "Providence", "Sacramento", "Saint_Paul", "Washington", "Wilmington"],
+    "10": ["BIRMINGHAM", "BRIDGEPORT", "BURLINGTON", "CALIFORNIA", "CHARLESTON", "CONNETICUT", "DES_MOINES", "HARRISBURG", "LOUISVILLE", "MANCHESTER", "MONTGOMERY", "MONTPELIER", "NEW_JERSEY", "NEW_MEXICO", "PROVIDENCE", "SACRAMENTO", "SAINT_PAUL", "WASHINGTON", "WILMINGTON"],
 
-    "11": ["Albuquerque", "Baton_Rouge", "Carson_City", "Little_Rock", "Los_Angeles", "Minneapolis", "Mississippi", "New_Orleans", "Sioux_Falls", "Springfield", "Tallahassee"],
+    "11": ["ALBUQUERQUE", "BATON_ROUGE", "CARSON_CITY", "LITTLE_ROCK", "LOS_ANGELES", "MINNEAPOLIS", "MISSISSIPPI", "NEW_ORLEANS", "SIOUX_FALLS", "SPRINGFIELD", "TALLAHASSEE"],
 
-    "12": ["Indianapolis", "Jacksonville", "North_Dakota", "Pennsylvania", "Philadelphia", "Rhode_Island", "South_Dakota"],
+    "12": ["INDIANAPOLIS", "JACKSONVILLE", "NORTH_DAKOTA", "PENNSYLVANIA", "PHILADELPHIA", "RHODE_ISLAND", "SOUTH_DAKOTA"],
 
-    "13": ["Massachusetts", "New Hampshire", "Oklahoma_City", "West_Virginia", "Jefferson_City", "North_Carolina", "Salt_Lake_City", "South_Carolina", "Virginia_Beach"]
+    "13": ["MASSACHUSETTS", "NEW HAMPSHIRE", "OKLAHOMA_CITY", "WEST_VIRGINIA", "JEFFERSON_CITY", "NORTH_CAROLINA", "SALT_LAKE_CITY", "SOUTH_CAROLINA", "VIRGINIA_BEACH"]
   },
 
   "wordCount": {
@@ -37,4 +37,3 @@
    
   }
 }
-

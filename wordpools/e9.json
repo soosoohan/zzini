@@ -1,1 +1,40 @@
+{
+"__comment": "e9",
+  "title": "WORPUZZ ZZINI",
+
+"description": "states capitals",
+
+  "words": {
+    "5": ["Iowa", "Ohio", "Utah", "Boise", "Dover", "Fargo", "Idaho", "Maine", "Omaha", "Salem", "Texas"],
+    
+    "6": ["Alaska", "Albany", "Austin", "Boston", "Denver", "Hawaii", "Helena", "Juneau", "Kansas", "Nevada", "Newark", "Oregon", "Pierre", "Topeka", "Wichta"],
+    
+    "7": ["Alabama", "Arizona", "Atlanta", "Augusta", "Chicago", "Concord", "Detroit", "Florida", "Georgia", "Houston", "Indiana", "Jackson", "Lansing", "Lincoln", "Madison", "Memphis", "Montana", "Olympia", "Phoenix", "Raleigh", "Seattle", "Trenton", "Vermont", "Wyoming"],
+
+    "8": ["Arkansas", "Billings", "Bismarck", "Cheyenne", "Colorado", "Columbia", "Columbus", "Delaware", "Hartford", "Honolulu", "Illinois", "Kentucky", "Maryland", "Michigan", "Missouri", "Nebraska", "New_York", "Oklahoma", "Portland", "Richmond", "Santa_Fe", "St.Louis", "Virginia"],
+
+    "9": ["Anchorage", "Annapolis", "Baltimore", "Charlotte", "Frankfort", "Las Vegas", "Louisiana", "Milwaukee", "Minnesota", "Nashville", "Tennessee", "Wisconsin"],
+
+    "10": ["Birmingham", "Bridgeport", "Burlington", "California", "Charleston", "Conneticut", "Des_Moines", "Harrisburg", "Louisville", "Manchester", "Montgomery", "Montpelier", "New_Jersey", "New_Mexico", "Providence", "Sacramento", "Saint_Paul", "Washington", "Wilmington"],
+
+    "11": ["Albuquerque", "Baton_Rouge", "Carson_City", "Little_Rock", "Los_Angeles", "Minneapolis", "Mississippi", "New_Orleans", "Sioux_Falls", "Springfield", "Tallahassee"],
+
+    "12": ["Indianapolis", "Jacksonville", "North_Dakota", "Pennsylvania", "Philadelphia", "Rhode_Island", "South_Dakota"],
+
+    "13": ["Massachusetts", "New Hampshire", "Oklahoma_City", "West_Virginia", "Jefferson_City", "North_Carolina", "Salt_Lake_City", "South_Carolina", "Virginia_Beach"]
+  },
+
+  "wordCount": {
+    "5": 1,
+    "6": 1,
+    "7": 2,
+    "8": 2,
+    "9": 1,
+    "10": 2,
+    "11": 1,
+    "12": 1,
+    "13": 1
+   
+  }
+}
 

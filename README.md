@@ -50,11 +50,11 @@ We plan to develop games with more diverse topics and in various languages such 
   
 ### 📌 격자 크기와 게임 종류
 
-| 격자 크기  grid size     | 👤🆚🤖컴퓨터와 대결   | 👤🆚👤사용자 2인 대결 |
-|------------------|--------------|----------------|
-|small  영 8x8 한 7x7  | 워퍼즈미니 (Worpuzz Mini)        |        -    |
-|medium  영 12x12 한 10x10    | 워퍼즈(Worpuzz)   | 워퍼즈 메이트(Worpuzz Mate) |
-|large 영 18x12 한 15x11    | 워퍼즈 몽(Worpuzz Mong)    | 워퍼즈 찌니(Worpuzz ZZini)   |
+| 격자 크기  grid size     | 👤🆚🤖컴퓨터와 대결   | 👤🆚👤사용자 2인 대결 |👤 혼자 하기 |
+|------------------|--------------|----------------|------|
+|small  영 8x8 한 7x7  | 워퍼즈미니 (Worpuzz Mini)        |        -    | 개발중 |
+|medium  영 12x12 한 10x10    | 워퍼즈(Worpuzz)   | 워퍼즈 메이트(Worpuzz Mate)    | 워퍼즈 브리즈(Worpuzz breeze)|
+|large 영 18x12 한 15x11    | 워퍼즈 몽(Worpuzz Mong)    | 워퍼즈 찌니(Worpuzz ZZini)   | 개발중|
  
 ---
 

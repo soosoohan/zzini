@@ -60,7 +60,7 @@ html, body {
 
 body {
   font-family: 'Noto Sans KR', sans-serif;
-  background-color: #f0f8f7;
+  background-color: #145454;
   color: #333;
   text-align: center;
   padding: 10px;
@@ -122,7 +122,7 @@ body {
 h1 {
   font-size: clamp(18px, 4vw, 24px);
   font-weight: bold;
-  color: #064d4d;
+  color:white;
   margin: 5px;
 }
 
@@ -205,7 +205,7 @@ p {
 .cell {
   width: 100%;
   height: 100%;
-  background-color: #ddd;
+  background-color: #c3dbdb;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -230,7 +230,7 @@ p {
 
 #player1Score, #player2Score {
   width: 180px;
-  height: 480px;
+  height: 560px;
   padding: 8px;
   font-size: 1.2em;
   font-weight: bold;
@@ -250,20 +250,20 @@ p {
 #currentTurn {
   font-size: clamp(14px, 3vw, 18px);
   margin: 8px;
-  color: #056762;
+  color:white;
   font-weight: bold;
 }
 
 #game {
   display: grid;
-  grid-template-columns: repeat(19, 1fr);
-  grid-template-rows: repeat(12, 1fr);
+  grid-template-columns: repeat(14, 1fr);
+  grid-template-rows: repeat(14, 1fr);
   grid-gap: 4px;
   padding: 8px;
   border: 2px solid #333;
   background-color: #eee;
-  width: 757px;
-  height: 480px;
+  width: 562px;
+  height: 562px;
 }
 
 .hidden {
@@ -325,10 +325,10 @@ p {
 <body>
   <div class="screen-warning" id="warning">
     <h2>Screen Too Small</h2>
-    <p>This game is a mode where two users compete on a large grid, designed to be played on screens of at least 800px or larger.</p>
-    <p>For screens smaller than 800px, please use Worpuzzmate.</p>
-    <p>이 게임은 두 사용자가 큰 격자에서 대결하는 모드로 최소 800px 이상의 화면에서 플레이하도록 디자인되었습니다</p>
-    <p>800px 보다 작은 화면에서는 워퍼즈메이트를 이용하세요</p>
+    <p>This game is a mode where two users compete on a large grid, designed to be played on screens of at least 660px or larger.</p>
+    <p>For screens smaller than 660px, please use Worpuzzmate.</p>
+    <p>이 게임은 두 사용자가 큰 격자에서 대결하는 모드로 최소 660px 이상의 화면에서 플레이하도록 디자인되었습니다</p>
+    <p>660px 보다 작은 화면에서는 워퍼즈메이트를 이용하세요</p>
     <button onclick="location.href='https://soosooland.com/worpuzzmate/'" class="game-button">Play Worpuzzmate<br> 워퍼즈메이트 하러가기</button>
   </div>
   <button class="back-button"  onclick="location.href='index.html'">←</button>
@@ -360,7 +360,7 @@ p {
     function checkScreenSize() {
       const warning = document.getElementById('warning');
       
-      if (window.innerWidth < 800) {
+      if (window.innerWidth < 660) {
         warning.style.display = 'block';
         document.getElementById('game-title').style.display = 'none';
         document.getElementById('game-desc').style.display = 'none';
@@ -405,8 +405,8 @@ p {
     }, false);
 
     // 전역 변수 선언
-    const gridWidth = 19;
-    const gridHeight = 12;
+    const gridWidth = 14;
+    const gridHeight = 14;
     const totalCells = gridWidth * gridHeight;
     let board, revealed, wordMap, foundWords, currentPlayer, foundBy, words, usedIndexes;
     let clovers = new Set(), daisies = new Set(), resultShown = false, gameStarted = false;
@@ -523,8 +523,8 @@ p {
         console.log('실제 배치된 단어 수:', placedWords.length);
       }
       
-      placeDaisies(15);
-      placeClovers(30);
+      placeDaisies(20);
+      placeClovers(20);
       fillEmptyCells();
       updateScore();
       updateTurnDisplay();
@@ -794,7 +794,7 @@ p {
           } else if (p2Count > p1Count) {
             message += `${player2} wins! 🎉`;
           } else {
-            message += `It's a tie! 🤝`;
+            message += `It's a tie! `;
           }
           
           alert(message);

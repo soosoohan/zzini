@@ -738,22 +738,31 @@ p {
             }
           }
         }
-      } else if (daisies.has(index)) {
-        cell.textContent = '<img src="daisy_27x27.png" alt="데이지" style="width:100%; height:100%;">';
-        const x = index % gridWidth;
-        const y = Math.floor(index / gridWidth);
-        for (let dy = -1; dy <= 1; dy++) {
-          for (let dx = -1; dx <= 1; dx++) {
-            if (dx === 0 && dy === 0) continue;
-            const nx = x + dx;
-            const ny = y + dy;
-            if (nx >= 0 && nx < gridWidth && ny >= 0 && ny < gridHeight) {
-              const nIdx = ny * gridWidth + nx;
-              if (!revealed[nIdx]) reveal(nIdx);
-            }
-          }
-        }
-      } else {
+  
+       } else if (daisies.has(index)) {
+  const img = document.createElement('img');
+  img.src = 'daisy_27x27.png';
+  img.alt = '데이지';
+  img.style.width = '100%';
+  img.style.height = '100%';
+  cell.appendChild(img);
+  
+  const x = index % gridWidth;
+  const y = Math.floor(index / gridWidth);
+  for (let dy = -1; dy <= 1; dy++) {
+    for (let dx = -1; dx <= 1; dx++) {
+      if (dx === 0 && dy === 0) continue;
+      const nx = x + dx;
+      const ny = y + dy;
+      if (nx >= 0 && nx < gridWidth && ny >= 0 && ny < gridHeight) {
+        const nIdx = ny * gridWidth + nx;
+        if (!revealed[nIdx]) reveal(nIdx);
+      }
+    }
+  }
+}
+
+       else {
         cell.textContent = board[index];
       }
       cell.classList.add('revealed');

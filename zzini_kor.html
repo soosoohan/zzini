@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="ko">
 <head>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-4YZHC1G9FN"></script>
@@ -11,7 +11,7 @@
     gtag('config', 'G-4YZHC1G9FN');
   </script>
     <meta charset="UTF-8" /> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>워퍼즈 찌니 - 2인용 큰 격자 단어 게임 | Soosooland</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -52,7 +52,7 @@ html, body {
   padding: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  position: fixed;
+  position: relative;
   width: 100%;
   -webkit-overflow-scrolling: touch;
 }
@@ -228,13 +228,16 @@ p {
 
 #player1Score, #player2Score {
   width: 180px;
-  height: 544px;
+  height: 560px;
   padding: 8px;
   font-size: 1.2em;
   font-weight: bold;
   border: 2px solid #333;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 #player1Score { 
@@ -245,11 +248,27 @@ p {
   background-color: #f6c28b; 
 }
 
+
 #currentTurn {
   font-size: clamp(14px, 3vw, 18px);
   margin: 8px;
   color: #c3dbdb;
   font-weight: bold;
+}
+
+/* 찾은 단어 목록 컨테이너 */
+.found-words-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.found-word {
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
 }
 
 #game {
@@ -287,7 +306,7 @@ p {
   display: inline; 
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 1000px) {
   body {
     padding: 5px;
   }
@@ -300,9 +319,10 @@ p {
   
   #player1Score, #player2Score {
     width: 100%;
-    max-width: 544px;
+    max-width: 757px;
     height: auto;
-    min-height: 100px;
+    min-height: 120px;
+    max-height: 300px;  /* 최대 높이 제한 */
     display: flex;
     flex-direction: column;
     order: 3;
@@ -739,10 +759,17 @@ p {
       cell.classList.add('revealed');
     }
 
-    function updateScore() {
-      player1ScoreEl.innerHTML = `<strong>${player1}</strong><br><br>` + foundBy.player1.map(w => ` ${w}`).join("<br>");
-      player2ScoreEl.innerHTML = `<strong>${player2}</strong><br><br>` + foundBy.player2.map(w => ` ${w}`).join("<br>");
-    }
+function updateScore() {
+  const createWordsList = (words) => {
+    if (words.length === 0) return '';
+    return '<div class="found-words-container">' + 
+           words.map(w => `<span class="found-word">${w}</span>`).join('') + 
+           '</div>';
+  };
+  
+  player1ScoreEl.innerHTML = `<strong>${player1}</strong>` + createWordsList(foundBy.player1);
+  player2ScoreEl.innerHTML = `<strong>${player2}</strong>` + createWordsList(foundBy.player2);
+}
 
     function updateTurnDisplay() {
       if (!gameStarted) return;

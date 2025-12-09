@@ -742,7 +742,7 @@ p {
           }
         }
       } else if (daisies.has(index)) {
-        cell.textContent = '🌼';
+        cell.textContent = '<img src="daisy_32x32.png" alt="데이지" style="width:100%; height:100%;">';
         const x = index % gridWidth;
         const y = Math.floor(index / gridWidth);
         for (let dy = -1; dy <= 1; dy++) {
@@ -821,19 +821,18 @@ function updateScore() {
       if (foundWords.size >= totalWords && totalWords > 0) {
         resultShown = true;
         
-        setTimeout(() => {
-          const p1Count = foundBy.player1.length;
-          const p2Count = foundBy.player2.length;
-          let message = `Game Over!\n\n${player1}: ${p1Count} words\n${player2}: ${p2Count} words\n\n`;
-          
-          if (p1Count > p2Count) {
-            message += `${player1} wins! 🎉`;
-          } else if (p2Count > p1Count) {
-            message += `${player2} wins! 🎉`;
-          } else {
-            message += `It's a tie! 🤝`;
-          }
-          
+setTimeout(() => {
+  const p1Count = foundBy.player1.length;
+  const p2Count = foundBy.player2.length;
+  let message = `게임 종료!\n\n${player1}: ${p1Count}개\n${player2}: ${p2Count}개\n\n`;
+  
+  if (p1Count > p2Count) {
+    message += `${player1} 승리! 🎉`;
+  } else if (p2Count > p1Count) {
+    message += `${player2} 승리! 🎉`;
+  } else {
+    message += `무승부!`;
+  }          
           alert(message);
         }, 500);
       }

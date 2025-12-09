@@ -11,7 +11,7 @@
     gtag('config', 'G-4YZHC1G9FN');
   </script>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Worpuzz Zzini - Two Player Large Grid Word Game | Soosooland</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -53,7 +53,7 @@ html, body {
   padding: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  position: fixed;
+  position: relative;
   width: 100%;
   -webkit-overflow-scrolling: touch;
 }
@@ -228,6 +228,7 @@ p {
   background-color: #f6c28b; 
 }
 
+
 #player1Score, #player2Score {
   width: 180px;
   height: 560px;
@@ -237,6 +238,9 @@ p {
   border: 2px solid #333;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 #player1Score { 
@@ -245,6 +249,21 @@ p {
 
 #player2Score { 
   background-color: #f6c28b; 
+}
+
+/* 찾은 단어 목록 컨테이너 */
+.found-words-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.found-word {
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
 }
 
 #currentTurn {
@@ -304,7 +323,8 @@ p {
     width: 100%;
     max-width: 757px;
     height: auto;
-    min-height: 100px;
+    min-height: 120px;
+    max-height: 300px;  /* 최대 높이 제한 */
     display: flex;
     flex-direction: column;
     order: 3;
@@ -319,7 +339,8 @@ p {
     order: 2;
   } 
 }
-  </style>
+</style>
+
 </head>
 
 <body>
@@ -732,10 +753,18 @@ p {
       cell.classList.add('revealed');
     }
 
-    function updateScore() {
-      player1ScoreEl.innerHTML = `<strong>${player1}</strong><br><br>` + foundBy.player1.map(w => ` ${w}`).join("<br>");
-      player2ScoreEl.innerHTML = `<strong>${player2}</strong><br><br>` + foundBy.player2.map(w => ` ${w}`).join("<br>");
-    }
+function updateScore() {
+  const createWordsList = (words) => {
+    if (words.length === 0) return '';
+    return '<div class="found-words-container">' + 
+           words.map(w => `<span class="found-word">${w}</span>`).join('') + 
+           '</div>';
+  };
+  
+  player1ScoreEl.innerHTML = `<strong>${player1}</strong>` + createWordsList(foundBy.player1);
+  player2ScoreEl.innerHTML = `<strong>${player2}</strong>` + createWordsList(foundBy.player2);
+}
+
 
     function updateTurnDisplay() {
       if (!gameStarted) return;

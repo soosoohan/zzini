@@ -289,7 +289,7 @@ p {
   display: inline; 
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1000px) {
   body {
     padding: 5px;
   }
@@ -327,8 +327,8 @@ p {
     <h2>Screen Too Small</h2>
     <p>This game is a mode where two users compete on a large grid, designed to be played on screens of at least 660px or larger.</p>
     <p>For screens smaller than 660px, please use Worpuzzmate.</p>
-    <p>이 게임은 두 사용자가 큰 격자에서 대결하는 모드로 최소 660px 이상의 화면에서 플레이하도록 디자인되었습니다</p>
-    <p>660px 보다 작은 화면에서는 워퍼즈메이트를 이용하세요</p>
+    <p>이 게임은 두 사용자가 큰 격자에서 대결하는 모드로 최소 600px 이상의 화면에서 플레이하도록 디자인되었습니다</p>
+    <p>600px 보다 작은 화면에서는 워퍼즈메이트를 이용하세요</p>
     <button onclick="location.href='https://soosooland.com/worpuzzmate/'" class="game-button">Play Worpuzzmate<br> 워퍼즈메이트 하러가기</button>
   </div>
   <button class="back-button"  onclick="location.href='index.html'">←</button>
@@ -360,7 +360,7 @@ p {
     function checkScreenSize() {
       const warning = document.getElementById('warning');
       
-      if (window.innerWidth < 660) {
+      if (window.innerWidth < 600) {
         warning.style.display = 'block';
         document.getElementById('game-title').style.display = 'none';
         document.getElementById('game-desc').style.display = 'none';

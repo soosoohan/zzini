@@ -305,6 +305,7 @@ p {
   display: inline; 
 }
 
+
 @media screen and (max-width: 1000px) {
   body {
     padding: 5px;
@@ -317,14 +318,15 @@ p {
   }
   
   #player1Score, #player2Score {
-    width: 544px;
-    min-height: 150px; 
+    width: 562px;
+    height: auto;
+    min-height: 120px;
+    max-height: 500px;  /* 최대 높이 제한 */
     display: flex;
     flex-direction: column;
     order: 3;
   }
-  
-  /* 단어 컨테이너가 flex-wrap으로 줄바꿈 */
+ /* 단어 컨테이너가 flex-wrap으로 줄바꿈 */
   .found-words-container {
     display: flex;
     flex-wrap: wrap;

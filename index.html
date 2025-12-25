@@ -229,6 +229,15 @@ font-size: 1.1em;
  <script>
 window.addEventListener('DOMContentLoaded', () => {
     const screenWidth = window.innerWidth;
+// 뒤로가기 대응
+window.addEventListener('pageshow', (event) => {
+    if (event.persisted) { // 캐시에서 복원된 경우
+        const screenWidth = window.innerWidth;
+        if (screenWidth < 670 && !sessionStorage.getItem('fromMini')) {
+            redirectToMate();
+        }
+    }
+});
     
     // 화면이 670px 이하일 때 워퍼즈로 리다이렉트
     if (screenWidth < 670 && !sessionStorage.getItem('fromMini')) {

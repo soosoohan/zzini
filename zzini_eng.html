@@ -468,7 +468,7 @@ p {
       const poolFile = urlParams.get('pool');
       
       if (!poolFile) {
-        words = ['CAT', 'GAME', 'PLAY', 'WORD', 'PUZZLE', 'FIND', 'CLICK', 'DOG'];
+        words = ['AGE', 'AND', 'GAME', 'AUNT ', 'BANK ', 'ALSO',  'ABOUT', 'ACTOR', 'ABOUT', 'ACROSS ', 'PUZZLE', 'ACROSS', 'ADDRESS', 'AIRPORT', 'ANYTHING', 'BATHROOM', 'AFTERNOON'];
         gameSection.classList.remove('hidden');
         startGame();
         return;
@@ -549,7 +549,7 @@ p {
         console.log('실제 배치된 단어 수:', placedWords.length);
       }
       
-      placeDaisies(30);
+      placeDaisies(20);
       placeClovers(20);
       fillEmptyCells();
       updateScore();

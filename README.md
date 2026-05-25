@@ -1,3 +1,8 @@
+## ⚠️ Copyright Notice | 저작권 안내 | کاپی رائٹ نوٹس  
+
+All games are registered copyrights. Unauthorized copying or redistribution is prohibited.  
+모든 게임은 저작권 등록된 창작물입니다. 무단 복제 및 배포를 금합니다.  
+تمام گیمز کاپی رائٹ محفوظ ہیں۔ غیر مجاز نقل ممنوع ہے۔
 ## 👤🆚🤖  워퍼즈 (Worpuzz) 시리즈
 
 Worpuzz는 격자를 탐험하여 숨겨진 단어를 찾는 게임입니다!  

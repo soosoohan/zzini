@@ -59,7 +59,7 @@
 .back-button {
         position: absolute;
         top: 20px;
-        left: 20px;
+        left: 40px;
         padding: 10px 20px;
         font-size: 1em;
         background-color: #FFD6BA;
@@ -84,6 +84,25 @@ margin: 20px auto;
 max-width: 600px;
 font-size: 1.1em;
 }
+#lang-toggle {
+    position: fixed;
+    top: 16px;
+    right: 40px;
+    background: #FFF2EB;
+    border: 1px solid #7A2E2E;
+    border-radius: 20px;
+    padding: 6px 14px;
+    color: #7A2E2E;
+    font-size: 0.85rem;
+    cursor: pointer;
+    z-index: 100;
+    transition: background 0.2s;
+  }
+  #lang-toggle:hover { background: #FFF2EB; }
+
+  .lang-ko, .lang-en { transition: opacity 0.2s; }
+  body.en .lang-ko { display: none; }
+  body.ko .lang-en { display: none; }
 
 h1 {
 font-size: clamp(1.3rem, 3.7vw, 1.9rem);
@@ -172,12 +191,17 @@ font-size: 1.1em;
 
 </style>
 </head>
-<body>
+<body class="ko" onload="initLanguage()">
   <button class="back-button" onclick="location.href='https://soosooland.com/'">
     Soosooland </button>
-  <h1>Mate ZZINI </h1>
+
+<button id="lang-toggle" onclick="toggleLang()">English</button>
+<h1 class="lang-ko">메이트 찌니</h2>
+  <h1 class="lang-en">Mate ZZINI</h2>
+  
   <div class="description">
-    두 사용자가  교대로 격자를 클릭하여 숨겨진 단어를 찾아가는 2인용 단어 찾기 게임입니다.<br>
+  <p class="lang-ko">
+두 사용자가  교대로 격자를 클릭하여 숨겨진 단어를 찾아가는 2인용 단어 찾기 게임입니다.<br>
     격자가 영어는 가로14*세로14이고, 한글은 가로12*세로12가 있는 큰 사이즈입니다.<br>
     영어 게임은 3~12글자의 영어단어가 들어있습니다.<br>
     단어는 가로, 세로, 대각선 방향으로 숨겨져 있으며, 마지막 글자를 열면 해당 단어를 획득합니다.<br>
@@ -185,7 +209,9 @@ font-size: 1.1em;
     🍀 클로버를 열면 상하좌우 4칸이 함께 열리고 한 번 더 턴을 가집니다.<br>
     <img src="daisy_64x64.png" alt="데이지" style="width:21px; height:21px; vertical-align:middle;"> 데이지를 열면 주변 8칸이 모두 열리며 마찬가지로 추가 턴이 주어집니다.<br>
     아래에서 원하는 워드풀을 선택해 게임을 시작하세요.<br>
-    A two-player word search game where users take turns clicking on the grid to find hidden words.​​​​​​​​​​​​​​​​<br>
+   </p>
+  <p class="lang-en">
+     A two-player word search game where users take turns clicking on the grid to find hidden words.​​​​​​​​​​​​​​​​<br>
     The grid is large-sized: 14×14 for English and 12×12 for Korean.<br>
     The English game contains English words from 3 to 12 letters.​​​​​​​​​​​​​​​​<br>
     Words are hidden horizontally, vertically, or diagonally, and you earn the word by revealing its final letter.<br>
@@ -193,7 +219,8 @@ font-size: 1.1em;
     🍀 If you find a clover, the four adjacent tiles (up, down, left, right) will open, and you get an extra turn.<br>
     <img src="daisy_64x64.png" alt="데이지" style="width:21px; height:21px; vertical-align:middle;"> If you find a daisy, all eight surrounding tiles will open, and you also get an extra turn.<br>
     Choose a word pool below to begin the game.</div>
-
+</p>
+      
   <div class="row-container">
     <div class="column">
       <h2>ENGLISH</h2>
@@ -295,7 +322,33 @@ function redirectToMate() {
     }, 1500);
 }
 
-      
+  function toggleLang() {
+  const body = document.body;
+  const btn = document.getElementById('lang-toggle');
+  if (body.classList.contains('ko')) {
+    body.classList.replace('ko', 'en');
+    document.documentElement.lang = 'en';
+    btn.textContent = '한국어';
+    localStorage.setItem('soosoo-lang', 'en'); // 여기
+  } else {
+    body.classList.replace('en', 'ko');
+    document.documentElement.lang = 'ko';
+    btn.textContent = 'EN';
+    localStorage.setItem('soosoo-lang', 'ko'); // 여기
+  }
+}
+  function initLanguage() {
+  const saved = localStorage.getItem('soosoo-lang');
+  const lang = saved || (navigator.language.startsWith('ko') ? 'ko' : 'en');
+  const body = document.body;
+  const btn = document.getElementById('lang-toggle');
+  if (lang === 'en') {
+    body.classList.replace('ko', 'en');
+    document.documentElement.lang = 'en';
+    btn.textContent = '한국어';
+  }
+}
+    
     function startGame(poolName, isEnglish) {
       const page = isEnglish ? 'zzini_eng.html' : 'zzini_kor.html';
       location.href = `${page}?pool=${poolName}`;

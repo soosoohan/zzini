@@ -87,15 +87,6 @@
     background-color: #FF9494;
     color: white;
     }
-.redirect-message {
-background-color: #FF9494;
-color: white;
-padding:20px;
-border-radius: 8px;
-margin: 20px auto;
-max-width: 600px;
-font-size: 1.1em;
-}
 #lang-toggle {
     position: fixed;
     top: 20px;
@@ -219,7 +210,7 @@ margin-top: 30px;
   
   <div class="description">
   <p class="lang-ko">
-두 사용자가  교대로 격자를 클릭하여 숨겨진 단어를 찾아가는 2인용 단어 찾기 게임입니다.<br>
+    두 사용자가  교대로 격자를 클릭하여 숨겨진 단어를 찾아가는 2인용 단어 찾기 게임입니다.<br>
     격자가 영어는 가로14*세로14이고, 한글은 가로12*세로12가 있는 큰 사이즈입니다.<br>
     영어 게임은 3~12글자의 영어단어가 들어있습니다.<br>
     단어는 가로, 세로, 대각선 방향으로 숨겨져 있으며, 마지막 글자를 열면 해당 단어를 획득합니다.<br>
@@ -273,75 +264,6 @@ margin-top: 30px;
   <p>© 2025 Han Soosoo. All rights reserved.</p>
 </footer>
  <script>
-window.addEventListener('DOMContentLoaded', () => {
-    const screenWidth = window.innerWidth;
-    
-    // 화면이 670px 이하일 때 워퍼즈메이트로 리다이렉트
-    if (screenWidth < 670 && !sessionStorage.getItem('fromMini')) {
-        redirectToMate();
-    }
-});
-// 뒤로가기 대응
-window.addEventListener('pageshow', (event) => {
-    if (event.persisted) { // 캐시에서 복원된 경우
-        const screenWidth = window.innerWidth;
-        if (screenWidth < 670 && !sessionStorage.getItem('fromMini')) {
-            redirectToMate();
-        }
-    }
-});
-
-function redirectToMate() {
-    const overlay = document.createElement('div');
-    overlay.innerHTML = `
-        <div style="
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 99999;
-            color: white;
-            text-align: center;
-            font-family: inherit;
-        ">
-            <div style="padding: 30px;">
-                <div style="font-size: 48px; margin-bottom: 20px;">⚠️</div>
-                <div style="font-size: 20px; font-weight: bold; margin-bottom: 15px;">
-                    화면이 너무 작습니다
-                </div>
-                <div style="font-size: 16px; margin-bottom: 10px;">
-                    Screen width must be at least 670px
-                </div>
-                <div style="font-size: 14px; opacity: 0.8; margin-bottom: 25px;">
-                    워퍼즈메이트로 자동 이동합니다...<br>
-                    Redirecting to WorpuzzMate...
-                </div>
-                <div class="loading-dots" style="font-size: 30px; letter-spacing: 5px;">
-                    ⚡⚡⚡
-                </div>
-            </div>
-        </div>
-        <style>
-            @keyframes blink {
-                0%, 100% { opacity: 1; }
-                50% { opacity: 0.3; }
-            }
-            .loading-dots {
-                animation: blink 1.5s infinite;
-            }
-        </style>
-    `;
-    document.body.appendChild(overlay);
-    
-    setTimeout(() => {
-        window.location.href = 'https://soosooland.com/worpuzzmate';
-    }, 1500);
-}
 
   function toggleLang() {
   const body = document.body;

@@ -70,25 +70,11 @@
     text-align: center;
     color: #7A2E2E; /* 기본 텍스트: 부드러운 브라운 */
   }
-.back-button {
-    position: absolute;
-    top: 20px;
-    left: 40px;
-    background: #FFF2EB;
-    border: 1px solid #7A2E2E;
-    padding: 6px 14px;
-    font-size: 1em;
-    color: #7A2E2E;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 100;
-    }
+.back-button {position: fixed;top: 12px; left: 12px;width: 44px;height: 44px;padding: 0;background: transparent;border: none;border-radius: 22%;cursor: pointer;z-index: 100; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.25); }
 
-.back-button:hover {
-    background-color: #FF9494;
-    color: white;
-    }
+.back-button img {width: 100%;height: 100%;object-fit: cover;display: block;}
+
+.back-button:active {transform: scale(0.92);transition: transform 0.1s;}
 #lang-toggle {
     position: fixed;
     top: 20px;
@@ -203,8 +189,8 @@ margin-top: 30px;
 </style>
 </head>
 <body class="ko" onload="initLanguage()">
-  <button class="back-button" onclick="location.href='https://soosooland.com/'">
-    Soosooland </button>
+<button class="back-button" onclick="location.href='https://soosooland.com/'" aria-label="수수랜드 홈으로">
+<img src="https://soosooland.com/images/home.png" alt="수수랜드 홈"></button>
 
 <button id="lang-toggle" onclick="toggleLang()">English</button>
 <h1 class="lang-ko">메이트 찌니</h2>

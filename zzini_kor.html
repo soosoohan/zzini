@@ -78,28 +78,6 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
-
-.screen-warning {
-  display: none;
-  text-align: center;
-  padding: 40px;
-  font-family: Arial, sans-serif;
-  max-width: 400px;
-  margin: 100px auto;
-  background-color: #f8f9fa;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-.screen-warning h2 {
-  color: #dc3545;
-  margin-bottom: 20px;
-}
-
-.screen-warning p {
-  color: #666;
-  line-height: 1.6;
-}
 #game-title {
   display: inline;
   margin-right: 10px;
@@ -363,14 +341,6 @@ margin-top: 30px;
 </head>
 
 <body>
-  <div class="screen-warning" id="warning">
-    <h2>Screen Too Small</h2>
-    <p>This game is a mode where two users compete on a large grid, designed to be played on screens of at least 600px or larger.</p>
-    <p>For screens smaller than 600px, please use Worpuzzmate.</p>
-    <p>이 게임은 두 사용자가 큰 격자에서 대결하는 모드로 최소 600px 이상의 화면에서 플레이하도록 디자인되었습니다</p>
-    <p>600px 보다 작은 화면에서는 워퍼즈메이트를 이용하세요</p>
-    <button onclick="location.href='https://soosooland.com/worpuzzmate/'" class="game-button">Play Worpuzzmate<br> 워퍼즈메이트 하러가기</button>
-  </div>
 <button class="back-button"  onclick="location.href='index.html'">←</button>
 <div class="game-header"> 
   <h1 id="game-title">게임 제목</h1>
@@ -404,52 +374,6 @@ margin-top: 30px;
 </footer>
 
   <script>
-    function checkScreenSize() {
-      const warning = document.getElementById('warning');
-      
-      if (window.innerWidth < 600) {
-        warning.style.display = 'block';
-        document.getElementById('game-title').style.display = 'none';
-        document.getElementById('game-desc').style.display = 'none';
-        document.querySelector('.game-container').style.display = 'none';
-      } else {
-        warning.style.display = 'none';
-        document.getElementById('game-title').style.display = 'inline';
-        document.getElementById('game-desc').style.display = 'inline';
-        document.querySelector('.game-container').style.display = 'flex';
-      }
-    }
-    
-    checkScreenSize();
-    window.addEventListener('resize', checkScreenSize);
-
-    // Prevent zoom/scroll
-    document.addEventListener('touchmove', function(e) {
-      if (e.scale !== 1) {
-        e.preventDefault();
-      }
-    }, { passive: false });
-
-    document.addEventListener('gesturestart', function(e) {
-      e.preventDefault();
-    });
-
-    document.addEventListener('gesturechange', function(e) {
-      e.preventDefault();
-    });
-
-    document.addEventListener('gestureend', function(e) {
-      e.preventDefault();
-    });
-
-    let lastTouchEnd = 0;
-    document.addEventListener('touchend', function(event) {
-      const now = (new Date()).getTime();
-      if (now - lastTouchEnd <= 300) {
-        event.preventDefault();
-      }
-      lastTouchEnd = now;
-    }, false);
 
     // 전역 변수 선언
     const gridWidth = 12;

@@ -72,10 +72,7 @@
     text-align: center;
     color: #7A2E2E; /* 기본 텍스트: 부드러운 브라운 */
   }
-.back-button {position: fixed;
-    top: max(48px, env(safe-area-inset-top) + 20px);
-    left: 22px;
-    width: 44px;height: 44px;padding: 0;background: transparent;border: none;border-radius: 22%;cursor: pointer;z-index: 100; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.25); }
+.back-button { position: fixed;  top: max(48px, env(safe-area-inset-top) + 20px);  left: 22px;  width: 44px; height: 44px; padding: 0; background: transparent; order: none; border-radius: 22%; cursor: pointer; z-index: 100; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.25); }
 
 .back-button img {width: 100%;height: 100%;object-fit: cover;display: block;}
 
@@ -175,15 +172,6 @@ cursor: pointer;
 background-color: #FF7373;
 }
 
-.redirect-message {
-background-color: #FF9494;
-color: white;
-padding: 15px;
-border-radius: 8px;
-margin: 20px auto;
-max-width: 600px;
-font-size: 1.1em;
-}
 footer {
 text-align: center;
 color: #7A2E2E !important;

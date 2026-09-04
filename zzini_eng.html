@@ -327,8 +327,6 @@ margin-top: 30px;
     <div id="gameSection" class="hidden">
       <div id="currentTurn"></div>
   <div class="guess-section">
-    <input type="text" id="guessInput" placeholder="YOUR GUESS(UPPERCASE)" />
-    <button id="guessBtn" class="game-button">SUBMIT</button>
     <button id="retryBtn" class="game-button">↻ Restart</button>
   </div>
 
@@ -362,8 +360,6 @@ margin-top: 30px;
     const retryBtn = document.getElementById('retryBtn');
     const gameSection = document.getElementById('gameSection');
     const currentTurnEl = document.getElementById('currentTurn');
-    const guessInput = document.getElementById('guessInput');
-    const guessBtn = document.getElementById('guessBtn');
     const wrongListEl = document.getElementById('wrongList');
     const wrongGuessesEl = document.getElementById('wrongGuesses');
 
@@ -802,10 +798,7 @@ function updateScore() {
     }
 
     retryBtn.onclick = retry;
-    guessBtn.onclick = handleGuess;
-    guessInput.addEventListener('keypress', e => {
-      if (e.key === 'Enter') handleGuess();
-    });
+    
   </script>
 
 </body>

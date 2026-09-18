@@ -9,12 +9,19 @@
     <meta name="robots" content="noindex, nofollow">
     <title>Worpuzz Zzini - Two Player Large Grid Word Game | Soosooland</title>
 <script>
-  if (window.top !== window.self) {
-    window.top.location = "https://soosooland.com";
-  }
-  if (window.innerWidth < 650) {
-    window.location.href = 'https://soosooland.com/worpuzzmate';
-  }
+  (function () {
+    // iframe 안이면 탈출
+    if (window.top !== window.self) {
+      window.top.location.replace("https://soosooland.com");
+      return;
+    }
+    var w = window.innerWidth;
+    if (w < 580) {
+      location.replace("https://soosooland.com/kong/");
+    } else if (w < 650) {
+      location.replace("https://soosooland.com/worpuzzmate/");
+    }
+  })();
   console.log("© 2025-2026 Soosooland by 한수수. All rights reserved.");
   console.log("https://soosooland.com");
   console.log("🎮 Worpuzz Mate Zzini | Born: 2025-07-19");

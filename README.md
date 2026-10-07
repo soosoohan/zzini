@@ -3,6 +3,7 @@
 All games are registered copyrights. Unauthorized copying or redistribution is prohibited.  
 모든 게임은 저작권 등록된 창작물입니다. 무단 복제 및 배포를 금합니다.  
 تمام گیمز کاپی رائٹ محفوظ ہیں۔ غیر مجاز نقل ممنوع ہے۔
+
 ## 👤🆚🤖  워퍼즈 (Worpuzz) 시리즈
 
 Worpuzz는 격자를 탐험하여 숨겨진 단어를 찾는 게임입니다!  
@@ -22,13 +23,13 @@ Worpuzz is a game where you explore a grid to find hidden words!
 - 셀을 클릭하여 한 번에 하나의 글자를 공개하고 숨겨진 단어를 찾으세요.  
   Click a cell to reveal one letter at a time and find the hidden words.
 
-- 🍀네잎 토끼풀을 찾으면 상하좌우 격자가 열리고 턴이 유지됩니다.
+- 🍀네잎 토끼풀을 찾으면 상하좌우 격자가 열리고 턴이 유지됩니다.  
   When you find a four-leaf clover, the cells above, below, left, and right open up, and you keep your turn.    
 
-- 🌼데이지를 찾으면 주변의 8개의 격자가 열리고 턴이 유지됩니다.
+- 🌼데이지를 찾으면 주변의 8개의 격자가 열리고 턴이 유지됩니다.  
   When you find a daisy, the 8 surrounding cells open up, and you keep your turn.    
 
-- 🌼데이지와 🍀토끼풀은 게임이 지루하지 않게 하고, 빈 자리에 랜덤하게 넣은 글자들이 유의미한 단어를 생성하는 가능성을 줄이려고 했고,  단어도 추리하지만 아이템을 노리는 것도 전략입니다.
+- 🌼데이지와 🍀토끼풀은 게임이 지루하지 않게 하고, 빈 자리에 랜덤하게 넣은 글자들이 유의미한 단어를 생성하는 가능성을 줄이려고 했고,  단어도 추리하지만 아이템을 노리는 것도 전략입니다.  
   The daisies and clovers serve to keep the game from becoming boring, reduce the possibility of randomly placed letters in empty spaces forming meaningful words, and add a strategic element - it’s not just about deducing words, but also about guessing which items to go for.   
 
 - 전략적으로 격자를 공개하여 가능한 한 많은 단어를 찾으세요.  
@@ -55,12 +56,15 @@ We plan to develop games with more diverse topics and in various languages such 
   
 ### 📌 격자 크기와 게임 종류
 
-| 격자 크기  grid size     | 👤🆚🤖컴퓨터와 대결   | 👤🆚👤사용자 2인 대결 |👤 혼자 하기 |
-|------------------|--------------|----------------|------|
-|영 8x8 한 7x7  | 워퍼즈 미니 (Worpuzz Mini)  | 메이트 콩(Mate Kong)    |   브리즈 팝(Breeze Pop) |
-|영 12x12 한 10x10    | 워퍼즈(Worpuzz)   | 워퍼즈 메이트(Worpuzz Mate)    | 워퍼즈 브리즈(Worpuzz breeze)|
-|영 14x14 한 12x12    | 워퍼즈 몽(Worpuzz Mong)    | 메이트 찌니(Mate ZZini)   |브리즈 젠(Breeze Zen)|
-|영 16X16 한 14X14 | - |-|브리즈 필드(Breeze Field)|
+| 격자 크기 (Grid Size) | 👤🆚🤖 컴퓨터와 대결 (vs Computer) | 👤🆚👤 사용자 2인 대결 (2 Players) | 👤 혼자 하기 (Solo) | 숫자 힌트 (Number Hint) |
+|---|---|---|---|---|
+|En 8x8 <br>한 7x7  | 워퍼즈 미니 (Worpuzz mini)  | 워퍼즈 메이트 콩(Worpuzz Mate Kong)    | 워퍼즈 브리즈 팝(Worpuzz Breeze Pop) |없음(Off)|
+|En 8x8<br>한 7x7  | 워퍼즈마인 미니 (Worpuzz Mine mini)        | 워퍼즈 마인워더 콩(Worpuzz MineWorder kong)  |-  | 있음(On)|
+|En 12x12<br>한 10x10    | 워퍼즈(Worpuzz)   | 워퍼즈 메이트(Worpuzz Mate)    | 워퍼즈 브리즈(Worpuzz breeze)|없음(Off)|
+|En 12x12<br> 한 10x10    | 워퍼즈마인 (Worpuzz Mine)   | 워퍼즈 마인워더 (Worpuzz MineWorder)  |-  | 있음(On)|
+|En 14x14<br>한 12x12    | 워퍼즈 몽(Worpuzz Mong)    | 워퍼즈 메이트 찌니(Worpuzz Mate ZZini)   |워퍼즈 브리즈 젠(Worpuzz Breeze Zen)|없음(Off)|
+|En 14x14<br>한 12x12    |워퍼즈마인 몽(Worpuzz Mine Mong)    | 워퍼즈 마인워더 찌니(Worpuzz MineWorder Zzini)| -  |있음(On)|
+|En 16x16<br>한 14x14 | - |-|워퍼즈 브리즈 필드(Worpuzz Breeze Field)|없음(Off)|
  
 ---
 
@@ -121,9 +125,9 @@ This project is registered with the Korea Copyright Commission.
 [Contact me](https://soosooland.com/Contact.html)
 
 ----
-## Play zzini : https://soosooland.com/zzini/
+## Play Worpuzz Mate zzini : https://soosooland.com/zzini/
 
-## 워퍼즈 찌니 주소 : https://soosooland.com/zzini/  
+## 워퍼즈 메이트 찌니 주소 : https://soosooland.com/zzini/  
 
 ## 🌟 Soosooland - Puzzle Game Hub by Han Soosoo
 

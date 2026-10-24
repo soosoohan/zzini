@@ -531,6 +531,7 @@ function checkWords() {
 }
 
 function checkGameEnd() {
+  if (resultShown) return;   // 중복 호출 방지
   const totalWords = Object.keys(wordMap).length;
   if (foundWords.size >= totalWords && totalWords > 0) {
     resultShown = true;
@@ -540,8 +541,17 @@ function checkGameEnd() {
     if (p1Count > p2Count) winner = `${player1} Wins!`;
     else if (p2Count > p1Count) winner = `${player2} Wins!`;
     else winner = "It's a Draw!";
-    currentTurnEl.textContent = `Game Over! ${winner} (${player1}: ${p1Count} / ${player2}: ${p2Count})`;
+    const scoreText = `${player1}: ${p1Count} / ${player2}: ${p2Count}`;
+    currentTurnEl.textContent = `Game Over! ${winner} (${scoreText})`;
     currentTurnEl.className = '';
+
+    showEndOverlay({
+      lang: 'en',
+      result: p1Count === p2Count ? 'draw' : 'win',
+      title: winner,
+      scoreText: scoreText,
+      onRestart: () => location.reload()
+    });
   }
 }
 

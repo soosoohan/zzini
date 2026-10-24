@@ -530,6 +530,7 @@ function checkWords() {
 }
 
 function checkGameEnd() {
+  if (resultShown) return;
   const totalWords = Object.keys(wordMap).length;
   if (foundWords.size >= totalWords && totalWords > 0) {
     resultShown = true;
@@ -538,9 +539,18 @@ function checkGameEnd() {
     let winner;
     if (p1Count > p2Count) winner = `${player1} 승리!`;
     else if (p2Count > p1Count) winner = `${player2} 승리!`;
-    else winner = "무승부!";
-    currentTurnEl.textContent = `게임 끝! ${winner} (${player1}: ${p1Count} / ${player2}: ${p2Count})`;
+    else winner = '무승부!';
+    const scoreText = `${player1}: ${p1Count} / ${player2}: ${p2Count}`;
+    currentTurnEl.textContent = `게임 종료! ${winner} (${scoreText})`;
     currentTurnEl.className = '';
+
+    showEndOverlay({
+      lang: 'ko',
+      result: p1Count === p2Count ? 'draw' : 'win',
+      title: winner,
+      scoreText: scoreText,
+      onRestart: () => location.reload()
+    });
   }
 }
 

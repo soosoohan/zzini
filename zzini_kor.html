@@ -93,6 +93,9 @@ p { margin: 0 0 10px; font-size: 1em; color: #EF0; text-align: center; line-heig
 
 .word-owned-player1 { background-color: #a0fab5; }
 .word-owned-player2 { background-color: #f7cdf7; }
+.cell.last-click {
+  box-shadow: inset 0 0 0 3px #FF9F1C;
+}
 
 #player1Score, #player2Score {
   background: #209087;
@@ -233,6 +236,7 @@ const totalCells = gridWidth * gridHeight;
 let board, revealed, wordMap, foundWords, currentPlayer, foundBy, words, usedIndexes;
 let clovers = new Set(), daisies = new Set(), resultShown = false, gameStarted = false;
 let player1 = "초록", player2 = "분홍", currentPlayerName = "";
+let lastIndex = null;
 
 const gameEl = document.getElementById('game');
 const player1ScoreEl = document.getElementById('player1Score');
@@ -504,6 +508,11 @@ function switchTurn(extra) {
 function handleClick(index) {
   if (revealed[index] || resultShown || !gameStarted) return;
   const extra = clovers.has(index) || daisies.has(index);
+
+  if (lastIndex !== null) gameEl.children[lastIndex].classList.remove('last-click');
+  gameEl.children[index].classList.add('last-click');
+  lastIndex = index;
+
   reveal(index);
   checkWords();
   checkGameEnd();

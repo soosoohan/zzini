@@ -95,7 +95,6 @@
   box-sizing: border-box;
  }
 
-
 .back-button {
   margin-left: 44px;
   flex-shrink: 0;
@@ -110,9 +109,7 @@
   .back-button:active {transform: scale(0.92);transition: transform 0.1s;}
 
   #lang-toggle {
-    position: fixed;
-    top: 20px;
-    right: 40px;
+    display: flex;
     background: #FFF2EB;
     border: 1px solid #7A2E2E;
     border-radius: 8px;
@@ -120,6 +117,7 @@
     color: #7A2E2E;
     font-size: 1rem;
     cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
     z-index: 100;
     transition: background 0.2s;
   }
@@ -129,8 +127,14 @@
   body.en .lang-ko { display: none; }
   body.ko .lang-en { display: none; }
 
+header {
+  text-align: center;
+  margin: 0 auto 30px;
+  max-width: 800px;
+}
+
 .main-title {
-    margin: 60px 0 20px;
+    margin: 0 0 20px;
     font-size: 0;
 }
 
@@ -223,6 +227,9 @@ margin-top: 30px;
 .hidden {
     display: none;
 }
+header { display: flow-root; height: auto !important; }
+.main-title { height: auto !important; }
+.main-title img { position: static !important; float: none !important; }
 
 @media (max-width: 650px) {
     body {
@@ -288,22 +295,25 @@ margin-top: 30px;
         background-color: #FF9494;
         color: white;
     }
-@media (max-width: 480px) {
-  .back-button { top: max(30px, env(safe-area-inset-top) + 10px); left: 10px;  width: 40px; height: 40px; }
-}  
-
+}
 </style>
 </head>
 <body class="ko" onload="initLanguage()">
-<button class="back-button" onclick="location.href='https://soosooland.com/'" aria-label="수수랜드 홈으로">
-<img src="https://soosooland.com/images/home.png" alt="수수랜드 홈"></button>
-
+<link rel="stylesheet" href="toolbar.css">
+<div class="toolbar">
+  <button class="back-button" onclick="location.href='https://soosooland.com/'" aria-label="수수랜드 홈으로">
+  <img src="https://soosooland.com/images/home.png" alt="수수랜드 홈">
+</button>
+  <div class="lang-toggle">
 <button id="lang-toggle" onclick="toggleLang()">English</button>
-    <div class="header">
+ </div><!--lang-toggle  -->
+</div> <!-- .toolbar -->
+<header>
     <h1 class="main-title">
         <img src="banner.jpeg" alt="메이트 찌니 Mate Zzini">
     </h1>
-    </div>
+</header>
+
   <div class="description">
   <p class="lang-ko"  style="text-align: left; padding-left: 20px;">
     • 워퍼즈 메이트 찌니는 두 사용자가  교대로 격자를 클릭하여 숨겨진 단어를 찾아가는 2인용 단어 찾기 게임입니다.<br>
@@ -374,7 +384,7 @@ margin-top: 30px;
   } else {
     body.classList.replace('en', 'ko');
     document.documentElement.lang = 'ko';
-    btn.textContent = 'EN';
+    btn.textContent = 'English';
     localStorage.setItem('soosoo-lang', 'ko'); // 여기
   }
 }
